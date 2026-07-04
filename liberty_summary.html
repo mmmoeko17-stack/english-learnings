@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liberty サマリー Learnings</title>
+<style>
+  :root {
+    --bg:#0f1117; --surface:#1a1d27; --surface2:#22263a;
+    --accent:#4f8ef7; --accent2:#7c5cbf;
+    --green:#3ecf8e; --yellow:#f5c842; --red:#f06a6a; --orange:#f5954a;
+    --purple:#a78bfa; --teal:#2dd4bf;
+    --text:#e8eaf0; --muted:#7a8099; --border:#2d3250; --radius:12px;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI','Yu Gothic UI',sans-serif; min-height:100vh; padding:24px 16px; max-width:820px; margin:0 auto; }
+
+  h1 { font-size:1.4rem; font-weight:800; color:var(--accent); margin-bottom:4px; }
+  .subtitle { color:var(--muted); font-size:0.85rem; }
+  .nav-links { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; margin-bottom:24px; }
+  .nav-link { display:inline-flex; align-items:center; gap:5px; border-radius:8px; padding:5px 13px; font-size:0.8rem; text-decoration:none; font-weight:600; border:1px solid; }
+
+  /* Search */
+  .search-input { width:100%; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:10px 14px; color:var(--text); font-size:0.9rem; outline:none; margin-bottom:16px; }
+  .search-input:focus { border-color:var(--accent); }
+  .search-input::placeholder { color:var(--muted); }
+
+  /* Category tabs */
+  .tabs { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+  .tab { background:var(--surface2); border:1px solid var(--border); border-radius:20px; padding:5px 14px; font-size:0.8rem; cursor:pointer; transition:all 0.15s; color:var(--muted); }
+  .tab:hover { border-color:var(--accent); color:var(--text); }
+  .tab.active { font-weight:700; }
+
+  /* Category card */
+  .cat-card { background:var(--surface); border-radius:var(--radius); margin-bottom:20px; overflow:hidden; border:1px solid var(--border); }
+  .cat-header { display:flex; align-items:center; gap:12px; padding:16px 20px; cursor:pointer; user-select:none; border-bottom:1px solid var(--border); }
+  .cat-icon { font-size:1.3rem; }
+  .cat-title { font-weight:800; font-size:1rem; flex:1; }
+  .cat-count { font-size:0.75rem; color:var(--muted); background:var(--surface2); border-radius:20px; padding:2px 10px; }
+  .cat-toggle { color:var(--muted); transition:transform 0.2s; }
+  .cat-card.open .cat-toggle { transform:rotate(180deg); }
+  .cat-body { padding:0; max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+  .cat-card.open .cat-body { max-height:5000px; }
+
+  /* Section inside category */
+  .section { border-bottom:1px solid var(--border); padding:14px 20px; }
+  .section:last-child { border-bottom:none; }
+  .section-title { font-size:0.78rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .lesson-tag { font-size:0.68rem; background:var(--surface2); border:1px solid var(--border); border-radius:4px; padding:1px 6px; color:var(--muted); font-weight:400; text-transform:none; letter-spacing:0; }
+
+  /* Points */
+  .point { display:flex; gap:9px; padding:4px 0; font-size:0.87rem; line-height:1.6; }
+  .point-bullet { color:var(--muted); flex-shrink:0; margin-top:2px; }
+  .point b { color:var(--yellow); }
+  .highlight { background:rgba(79,142,247,0.15); border-radius:4px; padding:1px 5px; font-size:0.82rem; font-family:monospace; color:var(--accent); }
+  .warn { color:var(--orange); }
+  .good { color:var(--green); }
+  .tip-box { background:rgba(79,142,247,0.07); border-left:3px solid var(--accent); border-radius:0 6px 6px 0; padding:8px 12px; margin:8px 0; font-size:0.84rem; line-height:1.6; }
+  .tip-box.green { background:rgba(62,207,142,0.07); border-left-color:var(--green); }
+  .tip-box.yellow { background:rgba(245,200,66,0.07); border-left-color:var(--yellow); }
+
+  .no-results { text-align:center; padding:48px; color:var(--muted); }
+  .updated { text-align:right; font-size:0.72rem; color:var(--muted); margin-top:8px; padding-bottom:16px; }
+</style>
+</head>
+<body>
+
+<h1>📋 Liberty サマリー Learnings</h1>
+<p class="subtitle">カテゴリ別知識まとめ — 授業が進むにつれて自動追記されていきます</p>
+<div class="nav-links">
+  <a href="liberty_learnings.html" target="_blank"
+     class="nav-link" style="background:rgba(79,142,247,0.1);border-color:rgba(79,142,247,0.35);color:#4f8ef7;">
+    📖 授業回別 Learnings →
+  </a>
+  <a href="C:/Users/mmoeko/.aki/aki_workspace/liberty_tracker.html" target="_blank"
+     class="nav-link" style="background:rgba(124,92,191,0.1);border-color:rgba(124,92,191,0.35);color:#a78bfa;">
+    📋 ロードマップ →
+  </a>
+</div>
+
+<input class="search-input" id="search" placeholder="🔍 キーワード検索（例: 分詞、agreement、不定詞）" oninput="doSearch()" />
+
+<div class="tabs" id="tabs"></div>
+
+<div id="container"></div>
+<div class="no-results" id="no-results" style="display:none;">該当する項目が見つかりません</div>
+<div class="updated">最終更新: 2026-07-04（第2回授業反映済み）</div>
+
+<script>
+const CATEGORIES = [
+  {
+    id: 'syntax',
+    icon: '🔡',
+    title: 'Syntax（語順・文構造）',
+    color: '#4f8ef7',
+    sections: [
+      {
+        title: 'Clause（節）と Phrase（句）の違い',
+        lessons: ['第1回'],
+        points: [
+          { text: '<b>Clause（節）</b>: 主語＋動詞を含む意味のまとまり' },
+          { text: '<b>Phrase（句）</b>: 主語＋動詞を含まない語のまとまり' },
+          { text: '句は節が省略されているだけ → 節を圧縮したものが句' },
+        ]
+      },
+      {
+        title: 'Verbパターン（V1〜V4） — Pass の例',
+        lessons: ['第1回'],
+        points: [
+          { text: '<b>V1</b>: S + V（自動詞）　例: Time <span class="highlight">passes</span>.' },
+          { text: '<b>V2</b>: S + V + C（補語）　例: She <span class="highlight">became</span> a doctor.' },
+          { text: '<b>V3</b>: S + V + O　例: He <span class="highlight">passed</span> the ball.' },
+          { text: '<b>V4</b>: S + V + O + O（誰に・何を）　例: She <span class="highlight">passed</span> him the salt.' },
+          { text: '<b>V5</b>: S + V + O + C　例: They <span class="highlight">called</span> him a genius.' },
+        ]
+      },
+      {
+        title: '補語（Complement）',
+        lessons: ['第1回'],
+        points: [
+          { text: '補語（C）は <b>形容詞</b> と <b>名詞</b> の2種類がある' },
+          { text: '形容詞の補語の後ろには <b>副詞しかこない</b>' },
+          { text: '名詞の後ろにある <b>前置詞＋名詞 → 形容詞句</b>（名詞を修飾）' },
+        ]
+      },
+      {
+        title: '挿入句（Parenthetical Phrase）',
+        lessons: ['第2回'],
+        points: [
+          { text: '文中で <b>, と , に挟まれている部分 = 挿入句（Phrase）</b>' },
+          { text: '挿入は基本的に句（Phrase）であり、独立した節は来ない' },
+          { text: '例: The manager, <span class="highlight">clearly frustrated</span>, left the room.' },
+          { text: '例: The report, <span class="highlight">written by a team of experts</span>, was accurate.' },
+        ]
+      },
+    ]
+  },
+  {
+    id: 'verbal',
+    icon: '🔀',
+    title: 'Verbal（句・節の変換・分詞・不定詞）',
+    color: '#a78bfa',
+    sections: [
+      {
+        title: '副詞節 → 副詞句（節の省略）',
+        lessons: ['第2回'],
+        points: [
+          { text: '副詞節を省略すると <b>不定詞（infinitive）か分詞（participle）</b> になる' },
+          { text: 'ほとんどのケースは <b>分詞</b>。<b>so that のときだけ不定詞</b>になる' },
+          { text: '例（so that → 不定詞）: He studied hard <span class="highlight">so that he could pass</span> → <span class="highlight">to pass</span>' },
+          { text: '例（because → 分詞）: <span class="highlight">Because she was tired</span> → <span class="highlight">Being tired</span>, she went to bed.' },
+        ]
+      },
+      {
+        title: 'being の省略プロセス',
+        lessons: ['第2回'],
+        points: [
+          { text: '例文: A sheet of glass, <span class="highlight">when backed with metal</span>, results in a mirror.' },
+          { text: '① <span class="highlight">when it is backed</span>（元の副詞節）' },
+          { text: '② 主語（it）省略 → <span class="highlight">when is backed</span>' },
+          { text: '③ be動詞（is）→ being → <span class="highlight">when being backed</span>' },
+          { text: '④ being は副詞句では省略可 → <span class="highlight">when backed</span>（最終形）' },
+          { text: '⚠️ when / while / if などの接続詞は意味を明確にするために <b>残すことができる</b>' },
+        ]
+      },
+      {
+        title: '分詞構文',
+        lessons: ['第2回'],
+        points: [
+          { text: '<b>分詞が副詞として使われる構文</b> = 副詞節を分詞句に簡略化したもの' },
+        ]
+      },
+      {
+        title: '関係代名詞の簡略化（分詞化）',
+        lessons: ['第1回'],
+        points: [
+          { text: '関係代名詞節は <b>現在分詞または過去分詞</b> に簡略化できる' },
+          { text: '<span class="warn">⚠️ 現在分詞のみではない — 能動か受動かで変わる</span>' },
+          { text: '能動: The man <span class="highlight">who is running</span> → The man <span class="highlight">running</span>（現在分詞）' },
+          { text: '受動: The letter <span class="highlight">which was written</span> by him → The letter <span class="highlight">written</span> by him（過去分詞）' },
+          { text: '関係代名詞は <b>2時点間</b> を表す（主節と関係節がそれぞれ別の状況を描写）' },
+          { text: '<b>主格の関係代名詞は省略不可</b>、目的格は省略可' },
+        ]
+      },
+      {
+        title: '不定詞 vs 動名詞（時間軸）',
+        lessons: ['第1回'],
+        points: [
+          { text: '<b>不定詞（to V）</b>: メインのVerbと共通の時制を起点に、<b>今後・未来に起こること</b>' },
+          { text: '<b>動名詞（V-ing）</b>: 今を起点に <b>過去へのベクトル</b>' },
+          { text: '例: I remember <span class="highlight">to call</span> him.（これから電話する = 未来）' },
+          { text: '例: I remember <span class="highlight">calling</span> him.（電話したことを覚えている = 過去）' },
+        ]
+      },
+      {
+        title: '前置詞句と副詞句（in increasing の分析）',
+        lessons: ['第2回'],
+        points: [
+          { text: '例文: produced <span class="highlight">in increasing quantity and variety</span>' },
+          { text: '💡 「前置詞＋名詞」と「現在分詞の副詞句」は <b>どちらも正しい</b> — 視点が違うだけ' },
+          { text: '構造: <b>in</b>（前置詞）＋ <b>increasing</b>（分詞形容詞）＋ <b>quantity and variety</b>（名詞）' },
+          { text: '<b>前置詞句が副詞の役割を果たすとき → 副詞句として機能する</b>（排他的ではない）' },
+          { text: 'increasing = 現在分詞が形容詞として quantity and variety を修飾（分詞形容詞）' },
+        ]
+      },
+      {
+        title: '先行詞を含む関係代名詞（Free Relative Pronouns）',
+        lessons: ['第2回'],
+        points: [
+          { text: '<b>「先行詞を含む」= 名詞の意味がすでに関係代名詞の中に内包されている</b>' },
+          { text: '→ 前にnounを置く必要がない。それ自体が名詞節を作る' },
+          { text: '<b>what</b> = the thing that　例: <span class="highlight">What he said</span> surprised everyone.' },
+          { text: '<b>whatever</b> = anything that　例: Take <span class="highlight">whatever</span> you need.' },
+          { text: '<b>whichever</b> = any one that　例: Choose <span class="highlight">whichever</span> you like.' },
+          { text: '<b>whoever</b> = anyone who　例: <span class="highlight">Whoever</span> arrives first opens the door.' },
+          { text: '<b>whomever</b> = anyone whom　例: I will support <span class="highlight">whomever</span> needs help.' },
+          { text: '<span class="warn">⚠️ whenever は関係副詞（「〜するときはいつでも」）— ここには含まれない</span>' },
+        ]
+      },
+    ]
+  },
+  {
+    id: 'tense',
+    icon: '⏱️',
+    title: 'Tense（時制）',
+    color: '#f5c842',
+    sections: [
+      {
+        title: 'Libertyの時制体系',
+        lessons: ['第1回'],
+        points: [
+          { text: '英語には <b>24の時制</b> がある（日本の学校英語で習う12時制の2倍）' },
+          { text: 'Syntax の TIME LINE として体系的に整理されている' },
+        ]
+      },
+    ]
+  },
+  {
+    id: 'agreement',
+    icon: '⚖️',
+    title: 'Agreement（一致の法則）',
+    color: '#3ecf8e',
+    sections: [
+      {
+        title: '例外の複数形Noun（見た目は複数・動詞は単数）',
+        lessons: ['第2回'],
+        points: [
+          { text: '判断基準: 固有名詞かどうかではなく <b>「1つのまとまり（one entity）か」</b>' },
+          { text: '<span class="good">✅ 単数</span>: The United States <span class="highlight">is</span>（複数の州 → 1つの国）' },
+          { text: '<span class="good">✅ 単数</span>: The Cloisters <span class="highlight">is</span>（1つの施設）' },
+          { text: '<span class="good">✅ 単数</span>: Mathematics <span class="highlight">is</span>（-ics の学問名 → 無条件で単数）' },
+          { text: '<span class="good">✅ 単数</span>: The news <span class="highlight">is</span>（不可算名詞）' },
+          { text: '<span class="warn">⚠️ 複数</span>: The Great Lakes <span class="highlight">are</span>（5つの独立した湖）' },
+          { text: '<span class="warn">⚠️ 複数</span>: The Rocky Mountains <span class="highlight">are</span>（各々の山が独立）' },
+        ],
+        tipbox: { type: 'yellow', text: '💡 知識が必要なケース: 地理的固有名詞など「その名詞が何を指すか」を知らないと判断できないものがある → 文法＋語彙＋背景知識の3つが合わさって初めて正確に判断できる' }
+      },
+      {
+        title: 'all の Agreement',
+        lessons: ['第2回'],
+        points: [
+          { text: '<b>all + 不可算名詞 → 単数動詞</b>: All the water <span class="highlight">is</span> gone.' },
+          { text: '<b>all + 可算名詞複数 → 複数動詞</b>: All the students <span class="highlight">are</span> here.' },
+        ]
+      },
+    ]
+  },
+  {
+    id: 'vocab',
+    icon: '📖',
+    title: '語彙・表現',
+    color: '#f5954a',
+    sections: [
+      {
+        title: 'except / except for / but / but for',
+        lessons: ['第2回'],
+        points: [
+          { text: '<b>except = except for = but</b>（〜を除いて）→ ほぼ同義' },
+          { text: '例: Everyone passed <span class="highlight">except / except for / but</span> Tom.' },
+          { text: '<span class="warn">⚠️ but for ≠ except for</span>: but for は「〜がなければ（仮定・反事実）」' },
+          { text: '例: <span class="highlight">But for</span> your help, I would have failed.（= If it were not for your help）' },
+        ]
+      },
+    ]
+  },
+];
+
+let currentFilter = 'all';
+
+function buildTabs() {
+  const tabs = document.getElementById('tabs');
+  const allTab = `<div class="tab active" style="border-color:var(--accent);color:var(--accent);" onclick="setFilter('all',this)">すべて</div>`;
+  const catTabs = CATEGORIES.map(c =>
+    `<div class="tab" style="" onclick="setFilter('${c.id}',this)" data-color="${c.color}">${c.icon} ${c.title.split('（')[0]}</div>`
+  ).join('');
+  tabs.innerHTML = allTab + catTabs;
+}
+
+function setFilter(id, el) {
+  currentFilter = id;
+  document.querySelectorAll('.tab').forEach(t => {
+    t.classList.remove('active');
+    t.style.borderColor = ''; t.style.color = '';
+  });
+  el.classList.add('active');
+  const color = id === 'all' ? 'var(--accent)' : (el.dataset.color || 'var(--accent)');
+  el.style.borderColor = color; el.style.color = color;
+  render();
+}
+
+function render(query = '') {
+  const container = document.getElementById('container');
+  container.innerHTML = '';
+  let shown = 0;
+
+  CATEGORIES.forEach(cat => {
+    if (currentFilter !== 'all' && currentFilter !== cat.id) return;
+
+    const filteredSections = cat.sections.filter(sec => {
+      if (!query) return true;
+      const q = query.toLowerCase();
+      return sec.title.toLowerCase().includes(q) ||
+        sec.points.some(p => p.text.toLowerCase().includes(q)) ||
+        (sec.tipbox && sec.tipbox.text.toLowerCase().includes(q));
+    });
+    if (filteredSections.length === 0) return;
+    shown++;
+
+    const sectionsHTML = filteredSections.map(sec => {
+      const pointsHTML = sec.points.map(p =>
+        `<div class="point"><span class="point-bullet">›</span><span>${p.text}</span></div>`
+      ).join('');
+      const tipHTML = sec.tipbox
+        ? `<div class="tip-box ${sec.tipbox.type||''}">${sec.tipbox.text}</div>` : '';
+      const lessonTags = sec.lessons.map(l =>
+        `<span class="lesson-tag">${l}</span>`).join(' ');
+      return `<div class="section">
+        <div class="section-title">${sec.title} ${lessonTags}</div>
+        ${pointsHTML}${tipHTML}
+      </div>`;
+    }).join('');
+
+    const totalPoints = filteredSections.reduce((s, sec) => s + sec.points.length, 0);
+    const card = document.createElement('div');
+    card.className = 'cat-card open';
+    card.innerHTML = `
+      <div class="cat-header" onclick="this.parentElement.classList.toggle('open')"
+           style="border-left:4px solid ${cat.color};">
+        <span class="cat-icon">${cat.icon}</span>
+        <span class="cat-title">${cat.title}</span>
+        <span class="cat-count">${totalPoints} ポイント</span>
+        <span class="cat-toggle">▼</span>
+      </div>
+      <div class="cat-body">${sectionsHTML}</div>`;
+    container.appendChild(card);
+  });
+
+  document.getElementById('no-results').style.display = shown === 0 ? 'block' : 'none';
+}
+
+function doSearch() {
+  render(document.getElementById('search').value);
+}
+
+buildTabs();
+render();
+</script>
+</body>
+</html>

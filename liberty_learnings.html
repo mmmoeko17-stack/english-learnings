@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liberty 授業Learnings</title>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --surface2: #22263a;
+    --accent: #4f8ef7; --accent2: #7c5cbf;
+    --green: #3ecf8e; --yellow: #f5c842; --red: #f06a6a; --orange: #f5954a;
+    --purple: #a78bfa; --teal: #2dd4bf;
+    --text: #e8eaf0; --muted: #7a8099; --border: #2d3250; --radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI','Yu Gothic UI',sans-serif; min-height: 100vh; padding: 24px 16px; max-width: 780px; margin: 0 auto; }
+
+  /* Header */
+  .page-header { margin-bottom: 28px; }
+  h1 { font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 4px; }
+  .subtitle { color: var(--muted); font-size: 0.85rem; }
+
+  /* Search */
+  .search-wrap { margin-bottom: 24px; }
+  .search-input { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--text); font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+  .search-input:focus { border-color: var(--accent); }
+  .search-input::placeholder { color: var(--muted); }
+
+  /* Filter tags */
+  .filter-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .filter-tag { background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 0.78rem; cursor: pointer; transition: all 0.15s; color: var(--muted); }
+  .filter-tag:hover { border-color: var(--accent); color: var(--text); }
+  .filter-tag.active { background: rgba(79,142,247,0.15); border-color: var(--accent); color: var(--accent); font-weight: 700; }
+
+  /* Lesson card */
+  .lesson-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 20px; overflow: hidden; transition: border-color 0.2s; }
+  .lesson-card:hover { border-color: #3d4270; }
+  .lesson-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; cursor: pointer; user-select: none; }
+  .lesson-meta { display: flex; align-items: center; gap: 12px; }
+  .lesson-num { background: var(--accent2); color: #fff; border-radius: 8px; padding: 3px 10px; font-size: 0.8rem; font-weight: 800; flex-shrink: 0; }
+  .lesson-title { font-weight: 700; font-size: 1rem; }
+  .lesson-date { font-size: 0.75rem; color: var(--muted); }
+  .lesson-toggle { color: var(--muted); font-size: 0.9rem; transition: transform 0.2s; }
+  .lesson-card.open .lesson-toggle { transform: rotate(180deg); }
+  .lesson-body { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.2s; }
+  .lesson-card.open .lesson-body { max-height: 9999px; padding: 0 20px 20px; }
+
+  /* Topic section inside card */
+  .topic-section { margin-bottom: 16px; }
+  .topic-section:last-child { margin-bottom: 0; }
+  .topic-title { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .topic-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Points */
+  .point { display: flex; gap: 10px; padding: 5px 0; font-size: 0.88rem; line-height: 1.55; align-items: flex-start; }
+  .point-bullet { color: var(--muted); flex-shrink: 0; margin-top: 2px; }
+  .point b { color: var(--yellow); }
+  .point .highlight { background: rgba(79,142,247,0.15); border-radius: 4px; padding: 1px 5px; font-size: 0.82rem; font-family: monospace; color: var(--accent); }
+  .note-caution { font-size: 0.75rem; color: var(--orange); margin-top: 10px; padding: 6px 10px; background: rgba(245,149,74,0.08); border-radius: 6px; border-left: 3px solid var(--orange); }
+
+  /* Tags on points */
+  .tag { display: inline-block; font-size: 0.68rem; padding: 1px 6px; border-radius: 4px; margin-left: 4px; font-weight: 700; vertical-align: middle; }
+  .tag-syntax  { background: rgba(79,142,247,0.15);  color: var(--accent); }
+  .tag-verbal  { background: rgba(167,139,250,0.15); color: var(--purple); }
+  .tag-tense   { background: rgba(245,200,66,0.15);  color: var(--yellow); }
+  .tag-vocab   { background: rgba(62,207,142,0.15);  color: var(--green); }
+
+  /* Stats bar */
+  .stats-bar { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 18px; flex: 1; min-width: 100px; }
+  .stat-num { font-size: 1.6rem; font-weight: 800; color: var(--accent); line-height: 1; }
+  .stat-label { font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
+
+  .no-results { text-align: center; padding: 40px; color: var(--muted); font-size: 0.9rem; }
+  .updated { text-align: right; font-size: 0.72rem; color: var(--muted); margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>🎓 Liberty 授業 Learnings</h1>
+  <p class="subtitle">授業ごとのメモと学びの蓄積 — 全24回コース</p>
+<a href="liberty_summary.html" target="_blank"
+   style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;background:rgba(245,149,74,0.1);border:1px solid rgba(245,149,74,0.35);border-radius:8px;padding:6px 14px;font-size:0.82rem;color:#f5954a;text-decoration:none;font-weight:600;"
+>📋 サマリー Learnings を開く →</a>
+<a href="C:/Users/mmoeko/.aki/aki_workspace/liberty_tracker.html"
+   target="_blank"
+   style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;background:rgba(124,92,191,0.1);border:1px solid rgba(124,92,191,0.35);border-radius:8px;padding:6px 14px;font-size:0.82rem;color:#a78bfa;text-decoration:none;font-weight:600;transition:background 0.15s;"
+   onmouseover="this.style.background='rgba(124,92,191,0.2)'"
+   onmouseout="this.style.background='rgba(124,92,191,0.1)'"
+>📋 ロードマップ・トラッカーを開く →</a>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="stat-lessons">2</div><div class="stat-label">受講済み回数</div></div>
+  <div class="stat"><div class="stat-num" id="stat-points">34</div><div class="stat-label">蓄積ポイント数</div></div>
+  <div class="stat"><div class="stat-num" id="stat-remain">22</div><div class="stat-label">残り回数</div></div>
+</div>
+
+<div class="search-wrap">
+  <input class="search-input" id="search" placeholder="🔍 キーワードで検索（例: 関係代名詞、Verb、不定詞）" oninput="doSearch()" />
+</div>
+
+<div class="filter-row">
+  <div class="filter-tag active" onclick="setFilter('all', this)">すべて</div>
+  <div class="filter-tag" onclick="setFilter('syntax', this)">Syntax</div>
+  <div class="filter-tag" onclick="setFilter('verbal', this)">Verbal</div>
+  <div class="filter-tag" onclick="setFilter('tense', this)">Tense</div>
+  <div class="filter-tag" onclick="setFilter('vocab', this)">単語</div>
+</div>
+
+<div id="lessons-container"></div>
+<div class="no-results" id="no-results" style="display:none;">該当するメモが見つかりません</div>
+<div class="updated">最終更新: 2026-07-01 ／ Akiが授業メモから自動整理</div>
+
+<script>
+const LESSONS = [
+  {
+    num: 1,
+    title: "第1回（オリエンテーション）",
+    date: "2026-06-27",
+    caution: "✅ 補正・補足済み（関係代名詞の分詞化を修正）",
+    topics: [
+      {
+        title: "Verbeとは？ — 全体像",
+        color: "#4f8ef7",
+        tags: ["syntax","verbal","tense"],
+        points: [
+          { text: "<b>Syntax（語順）</b>: 語順が明確に決まっている。Word order / Agreement", tags: ["syntax"] },
+          { text: "<b>Tense（時制）</b>: 英語には <span class='highlight'>24の時制</span> がある（日本の学校英語の2倍）", tags: ["tense"] },
+          { text: "<b>Verbal（Syntaxの応用）</b>: 名詞・形容詞・副詞には順番が決まっている", tags: ["verbal"] },
+          { text: "<b>Clause（節）</b>: 主語＋動詞を含む意味のまとまり", tags: ["syntax"] },
+          { text: "<b>Phrase（句）</b>: 主語＋動詞を含まない語のまとまり", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "関係代名詞",
+        color: "#a78bfa",
+        tags: ["verbal","syntax"],
+        points: [
+          { text: "日本語には関係代名詞の概念がない", tags: ["verbal"] },
+          { text: "関係代名詞は <b>2時点間</b> を表す（主節と関係節がそれぞれ別の時点・状況を描写する）", tags: ["verbal"] },
+          { text: "⚠️ 修正: 関係代名詞が簡略化されると <b>現在分詞または過去分詞</b> になる（現在分詞のみではない）", tags: ["verbal"] },
+          { text: "　能動: The man <span class='highlight'>who is running</span> → The man <span class='highlight'>running</span>（現在分詞）", tags: ["verbal"] },
+          { text: "　受動: The letter <span class='highlight'>which was written</span> by him → The letter <span class='highlight'>written</span> by him（過去分詞）", tags: ["verbal"] },
+          { text: "主格の関係代名詞 → 分詞にして <b>形容詞句</b> にできる", tags: ["verbal"] },
+          { text: "<b>主格は省略不可</b>、目的格は省略可", tags: ["syntax"] },
+          { text: "節を句にする場合：不定詞か分詞（<b>分詞がメジャー</b>）", tags: ["verbal"] },
+          { text: "句は節が省略されているだけ", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "Verbパターン — Pass の例",
+        color: "#f5c842",
+        tags: ["syntax","vocab"],
+        points: [
+          { text: "<b>V1</b>（通過する）: S + V", tags: ["syntax"] },
+          { text: "<b>V3</b>（手渡す）: S + V + O", tags: ["syntax"] },
+          { text: "<b>V4</b>（誰に何を）: S + V + O + O", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "品詞・語順",
+        color: "#3ecf8e",
+        tags: ["syntax","verbal"],
+        points: [
+          { text: "名詞の後ろの <b>前置詞＋名詞 → 形容詞</b>（名詞を修飾）", tags: ["verbal"] },
+          { text: "補語（C）は <b>形容詞</b> と <b>名詞</b> がある", tags: ["syntax"] },
+          { text: "形容詞の補語の後ろには <b>副詞しかこない</b>", tags: ["verbal"] },
+        ]
+      },
+      {
+        title: "不定詞 vs 動名詞（時間軸）",
+        color: "#f5954a",
+        tags: ["tense","verbal"],
+        points: [
+          { text: "<b>不定詞（to V）</b>: メインのVerbと共通の時制を起点に、<b>今後・未来に起こること</b>に使う", tags: ["tense"] },
+          { text: "<b>動名詞（V-ing）</b>: 今を起点に <b>過去へのベクトル</b> として使う", tags: ["tense"] },
+          { text: "例: I remember <span class='highlight'>to call</span> him.（これから電話する） vs I remember <span class='highlight'>calling</span> him.（電話したことを覚えている）", tags: ["tense"] },
+        ]
+      }
+    ]
+  }  ,{
+    num: 2,
+    title: "第2回",
+    date: "2026-07-04",
+    caution: "聞き取りメモを補正・補足済み",
+    topics: [
+      {
+        title: "副詞節 → 副詞句（節の省略）",
+        color: "#4f8ef7",
+        tags: ["syntax","verbal"],
+        points: [
+          { text: "副詞節が省略されると <b>不定詞（infinitive）か分詞（participle）</b> になる", tags: ["verbal"] },
+          { text: "ほとんどのケースは <b>分詞</b>。<b>so that のときだけ不定詞</b>になる", tags: ["verbal"] },
+          { text: "例: He studied hard <span class='highlight'>so that he could pass</span> → <span class='highlight'>to pass</span>（so that → 不定詞）", tags: ["verbal"] },
+          { text: "例: <span class='highlight'>Because she was tired</span>, she went to bed → <span class='highlight'>Being tired</span>, she went to bed（because節 → 分詞）", tags: ["verbal"] },
+        ]
+      },
+      {
+        title: "分詞構文",
+        color: "#a78bfa",
+        tags: ["verbal"],
+        points: [
+          { text: "<b>分詞が副詞として使われる構文</b> = 副詞節を分詞句に簡略化したもの", tags: ["verbal"] },
+        ]
+      },
+      {
+        title: "挿入句（Parenthetical Phrase）",
+        color: "#2dd4bf",
+        tags: ["syntax","verbal"],
+        points: [
+          { text: "文中で <b>, と , に挟まれている部分 = 挿入句</b>（Phrase）。独立した節は来ない", tags: ["syntax"] },
+          { text: "例: The manager, <span class='highlight'>clearly frustrated</span>, left the room without a word.", tags: ["syntax"] },
+          { text: "例: The report, <span class='highlight'>written by a team of experts</span>, was highly accurate.", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "副詞節 → 副詞句：being の省略プロセス",
+        color: "#f5954a",
+        tags: ["verbal"],
+        points: [
+          { text: "例文: A sheet of clear glass, <span class='highlight'>when backed with a film of metal</span>, results in a luminously clear mirror.", tags: ["verbal"] },
+          { text: "① <span class='highlight'>when it is backed</span>（元の副詞節）", tags: ["verbal"] },
+          { text: "② 主語（it）を省略 → <span class='highlight'>when is backed</span>", tags: ["verbal"] },
+          { text: "③ be動詞（is）→ 現在分詞（being）→ <span class='highlight'>when being backed</span>", tags: ["verbal"] },
+          { text: "④ being は副詞句では省略可 → <span class='highlight'>when backed</span>（最終形）", tags: ["verbal"] },
+          { text: "⚠️ when / while / if などの接続詞は意味を明確にするため <b>残すことができる</b>", tags: ["verbal"] },
+        ]
+      },
+      {
+        title: "先行詞を含む関係代名詞（Free Relative Pronouns）",
+        color: "#3ecf8e",
+        tags: ["syntax","verbal"],
+        points: [
+          { text: "⚠️ 「前のnounを修飾する」は誤り → 正しくは <b>それ自体が名詞節を作る</b>（名詞として機能）", tags: ["syntax"] },
+          { text: "💡 「先行詞を含む」= <b>名詞の意味がすでに関係代名詞の中に入っている</b>", tags: ["syntax"] },
+          { text: "　例: <span class='highlight'>what</span> = <span class='highlight'>the thing which</span>（「もの」という先行詞がwhatの中に内包されている）", tags: ["syntax"] },
+          { text: "　→ だから前にnounを置く必要がない。whatだけで「もの」＋「〜する」の両方を表せる", tags: ["syntax"] },
+          { text: "<b>what</b> = the thing that／例: <span class='highlight'>What he said</span> surprised everyone.", tags: ["syntax"] },
+          { text: "<b>whatever</b> = anything that／例: Take <span class='highlight'>whatever</span> you need.", tags: ["syntax"] },
+          { text: "<b>whichever</b> = any one that／例: Choose <span class='highlight'>whichever</span> you like.", tags: ["syntax"] },
+          { text: "<b>whoever</b> = anyone who／例: <span class='highlight'>Whoever</span> arrives first should open the door.", tags: ["syntax"] },
+          { text: "<b>whomever</b> = anyone whom／例: I will support <span class='highlight'>whomever</span> needs help.", tags: ["syntax"] },
+          { text: "⚠️ <b>whenever は関係副詞</b>（「〜するときはいつでも」）であり、ここには含まれない", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "例外の複数形Noun（形は複数・動詞は単数）",
+        color: "#f5c842",
+        tags: ["vocab","syntax"],
+        points: [
+          { text: "見た目は複数形（-s）だが <b>ひとまとまりの概念 → 単数動詞</b>を取る", tags: ["syntax"] },
+          { text: "固有名詞: The Cloisters, The United States, The Netherlands", tags: ["vocab"] },
+          { text: "学問名（-ics）: Mathematics, Physics, Economics → 常に単数", tags: ["vocab"] },
+          { text: "不可算名詞: News → 常に単数（<span class='highlight'>The news is</span> good.）", tags: ["vocab"] },
+          { text: "💡 補足: 単数扱いになる条件は「固有名詞かどうか」ではなく <b>「1つのまとまり（one entity）として認識されるかどうか」</b>", tags: ["syntax"] },
+          { text: "　✅ 単数: The United States <span class='highlight'>is</span> a country.（5つの州でも → 1つの国）", tags: ["syntax"] },
+          { text: "　✅ 単数: The Cloisters <span class='highlight'>is</span> a museum.（建物名 → 1つの施設）", tags: ["syntax"] },
+          { text: "　✅ 複数: The Great Lakes <span class='highlight'>are</span> beautiful.（5つの別々の湖 → 複数の独立した存在）", tags: ["syntax"] },
+          { text: "　✅ 複数: The Rocky Mountains <span class='highlight'>are</span> in North America.（複数の山々 → 各々が独立）", tags: ["syntax"] },
+          { text: "　→ 「All of the Great Lakes are」は、5つの湖それぞれが独立した存在であるため複数扱い", tags: ["syntax"] },
+          { text: "💡 <b>単数/複数の判断には背景知識が必要なケースがある</b> → 知識なしで判断できるパターンと、覚えるしかないパターンがある", tags: ["syntax"] },
+          { text: "　✅ ルールで解決: <b>-ics の学問名</b>（mathematics, physics など）→ 無条件で単数", tags: ["syntax"] },
+          { text: "　✅ ルールで解決: <b>The ＋ 複数形 ＝ 国名</b>（The United States, The Philippines など）→ ほぼ単数", tags: ["syntax"] },
+          { text: "　✅ ルールで解決: <b>news / means / series / species</b> → 無条件で単数（暗記）", tags: ["vocab"] },
+          { text: "　⚠️ 知識が必要: The Great Lakes, The Rocky Mountains など地理的固有名詞 → その都度覚えるしかない", tags: ["vocab"] },
+          { text: "📌 結論: 文法ルールだけで100%解決できる問題はほぼない。<b>文法＋語彙＋背景知識の3つが合わさって初めて正確に判断できる</b>", tags: ["syntax","vocab"] },
+        ]
+      },
+      {
+        title: "all / except / but / but for",
+        color: "#f06a6a",
+        tags: ["syntax","vocab"],
+        points: [
+          { text: "<b>all + 不可算名詞 → 単数動詞</b>: <span class='highlight'>All the water is</span> gone.", tags: ["syntax"] },
+          { text: "<b>all + 可算名詞複数 → 複数動詞</b>: <span class='highlight'>All the students are</span> here.", tags: ["syntax"] },
+          { text: "<b>except = except for = but</b>（〜を除いて）: Everyone passed <span class='highlight'>except / except for / but</span> Tom.", tags: ["vocab"] },
+          { text: "⚠️ <b>but for ≠ except for</b>: but for は「〜がなければ（仮定）」", tags: ["vocab"] },
+          { text: "例: <span class='highlight'>But for</span> your help, I would have failed.（= If it were not for your help）", tags: ["vocab"] },
+        ]
+      },,{
+        title: "前置詞句 vs 現在分詞の副詞句（in increasing の分析）",
+        color: "#2dd4bf",
+        tags: ["verbal","syntax"],
+        points: [
+          { text: "例文: Man-made fibers have been produced <span class='highlight'>in increasing quantity and variety</span>.", tags: ["syntax"] },
+          { text: "💡 先生の「現在分詞の副詞句」と「前置詞＋名詞」は <b>どちらも正しい</b> — 視点が違うだけ", tags: ["syntax","verbal"] },
+          { text: "【構造】<b>in</b>（前置詞）＋ <b>increasing</b>（分詞形容詞）＋ <b>quantity and variety</b>（名詞）", tags: ["syntax"] },
+          { text: "　→ 構造として見ると <b>前置詞句</b>、機能として見ると <b>副詞句</b>（have been produced を修飾）", tags: ["syntax"] },
+          { text: "【ポイント】前置詞句と副詞句は排他的ではない。<b>前置詞句が副詞の役割を果たすとき → 副詞句になる</b>", tags: ["syntax"] },
+          { text: "increasing = 現在分詞が形容詞として quantity and variety を修飾（分詞形容詞）", tags: ["verbal"] },
+        ]
+      }
+    ]
+  }
+];
+
+let currentFilter = 'all';
+
+function buildHTML(lessons) {
+  const container = document.getElementById('lessons-container');
+  container.innerHTML = '';
+  let shown = 0;
+  lessons.forEach(lesson => {
+    // Filter
+    if (currentFilter !== 'all') {
+      const hasTag = lesson.topics.some(t => t.tags.includes(currentFilter));
+      if (!hasTag) return;
+    }
+    shown++;
+    const card = document.createElement('div');
+    card.className = 'lesson-card' + (lesson.num === lessons[lessons.length-1].num ? ' open' : '');
+    card.dataset.num = lesson.num;
+
+    const topicsHTML = lesson.topics.map(topic => {
+      if (currentFilter !== 'all' && !topic.tags.includes(currentFilter)) return '';
+      const pointsHTML = topic.points.map(p => {
+        if (currentFilter !== 'all' && !p.tags.some(t => t === currentFilter)) return '';
+        return `<div class="point"><span class="point-bullet">›</span><span>${p.text}</span></div>`;
+      }).join('');
+      if (!pointsHTML.trim()) return '';
+      return `
+        <div class="topic-section">
+          <div class="topic-title">
+            <span class="topic-dot" style="background:${topic.color}"></span>
+            ${topic.title}
+          </div>
+          ${pointsHTML}
+        </div>`;
+    }).join('');
+
+    card.innerHTML = `
+      <div class="lesson-header" onclick="toggleCard(this)">
+        <div class="lesson-meta">
+          <span class="lesson-num">第${lesson.num}回</span>
+          <div>
+            <div class="lesson-title">${lesson.title}</div>
+            <div class="lesson-date">${lesson.date}</div>
+          </div>
+        </div>
+        <span class="lesson-toggle">▼</span>
+      </div>
+      <div class="lesson-body">
+        ${lesson.caution ? `<div class="note-caution">⚠️ ${lesson.caution}</div><br>` : ''}
+        ${topicsHTML || '<div style="color:var(--muted);font-size:0.85rem;">このフィルターに該当するメモがありません</div>'}
+      </div>`;
+    container.appendChild(card);
+  });
+  document.getElementById('no-results').style.display = shown === 0 ? 'block' : 'none';
+}
+
+function toggleCard(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+function setFilter(f, el) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  buildHTML(LESSONS);
+}
+
+function doSearch() {
+  const q = document.getElementById('search').value.toLowerCase();
+  if (!q) { buildHTML(LESSONS); return; }
+  const filtered = LESSONS.filter(lesson =>
+    lesson.title.toLowerCase().includes(q) ||
+    lesson.topics.some(t =>
+      t.title.toLowerCase().includes(q) ||
+      t.points.some(p => p.text.toLowerCase().includes(q))
+    )
+  );
+  buildHTML(filtered);
+}
+
+buildHTML(LESSONS);
+</script>
+</body>
+</html>
