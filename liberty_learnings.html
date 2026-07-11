@@ -92,9 +92,9 @@
 </div>
 
 <div class="stats-bar">
-  <div class="stat"><div class="stat-num" id="stat-lessons">2</div><div class="stat-label">受講済み回数</div></div>
-  <div class="stat"><div class="stat-num" id="stat-points">34</div><div class="stat-label">蓄積ポイント数</div></div>
-  <div class="stat"><div class="stat-num" id="stat-remain">22</div><div class="stat-label">残り回数</div></div>
+  <div class="stat"><div class="stat-num" id="stat-lessons">3</div><div class="stat-label">受講済み回数</div></div>
+  <div class="stat"><div class="stat-num" id="stat-points">72</div><div class="stat-label">蓄積ポイント数</div></div>
+  <div class="stat"><div class="stat-num" id="stat-remain">21</div><div class="stat-label">残り回数</div></div>
 </div>
 
 <div class="search-wrap">
@@ -111,7 +111,7 @@
 
 <div id="lessons-container"></div>
 <div class="no-results" id="no-results" style="display:none;">該当するメモが見つかりません</div>
-<div class="updated">最終更新: 2026-07-01 ／ Akiが授業メモから自動整理</div>
+<div class="updated">最終更新: 2026-07-11 ／ Akiが授業メモから自動整理</div>
 
 <script>
 const LESSONS = [
@@ -290,6 +290,157 @@ const LESSONS = [
           { text: "　→ 構造として見ると <b>前置詞句</b>、機能として見ると <b>副詞句</b>（have been produced を修飾）", tags: ["syntax"] },
           { text: "【ポイント】前置詞句と副詞句は排他的ではない。<b>前置詞句が副詞の役割を果たすとき → 副詞句になる</b>", tags: ["syntax"] },
           { text: "increasing = 現在分詞が形容詞として quantity and variety を修飾（分詞形容詞）", tags: ["verbal"] },
+        ]
+      }
+    ]
+  }  ,
+  {
+    num: 3,
+    title: "第3回",
+    date: "2026-07-11",
+    caution: "聞き取りメモを補正・補足済み",
+    topics: [
+      {
+        title: "VerbがV3のとき — 後ろにはAdverbしかこない",
+        color: "#4f8ef7",
+        tags: ["syntax","verbal"],
+        points: [
+          { text: "<b>V3（S + V + O）</b> の構造では、目的語（O）の後ろに来るのは <b>Adverbのみ</b>", tags: ["syntax"] },
+          { text: "例: She <span class=\'highlight\'>put the book</span> <span class=\'highlight\'>carefully</span>.（V3 + Adverb）", tags: ["syntax"] },
+          { text: "⚠️ V3の後ろに形容詞は来ない。形容詞が来るのはV2（S + V + C）の補語の位置のみ", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "it の5つの使い方",
+        color: "#a78bfa",
+        tags: ["syntax","verbal"],
+        points: [
+          { text: "<b>① 代名詞</b>: 前述の名詞を受ける通常用法 — <span class=\'highlight\'>It</span> is on the table.", tags: ["syntax"] },
+          { text: "<b>② 特別用法</b>（時間・距離・天気・値段）: 形式的な主語。意味上の主語はない", tags: ["syntax"] },
+          { text: "　時間: <span class=\'highlight\'>It</span> is three o\'clock. / 天気: <span class=\'highlight\'>It</span> is raining. / 距離: <span class=\'highlight\'>It</span> is 10 miles to the station.", tags: ["syntax"] },
+          { text: "<b>③ 仮の主語（Dummy Subject）</b>: to不定詞・that節を後ろに回すために使う", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>It</span> is important <span class=\'highlight\'>to study</span> every day.", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>It</span> is true <span class=\'highlight\'>that he passed</span> the exam.", tags: ["syntax"] },
+          { text: "<b>④ 仮の目的語（Dummy Object）</b>: 目的語が長い場合に<span class=\'highlight\'>it</span>を形式目的語として置く", tags: ["syntax"] },
+          { text: "　例: I found <span class=\'highlight\'>it</span> difficult <span class=\'highlight\'>to solve</span> the problem.（it = to solve the problem）", tags: ["syntax"] },
+          { text: "　例: She made <span class=\'highlight\'>it</span> clear <span class=\'highlight\'>that she disagreed</span>.", tags: ["syntax"] },
+          { text: "<b>⑤ 強調構文（It is ~ that ...）</b>: 特定の要素を強調する", tags: ["syntax"] },
+          { text: "　構造: <span class=\'highlight\'>It is</span> ＋【強調したい語】＋ <span class=\'highlight\'>that</span> ＋ 残りの文", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>It is John that</span> broke the window.（ジョンだ、が強調）", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>It was yesterday that</span> she called me.（昨日だ、が強調）", tags: ["syntax"] },
+          { text: "💡 <b>見分け方</b>: that を消して文が成立すれば強調構文 → John broke the window. ✅ → 強調構文", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "前置詞の後はNounしかこない",
+        color: "#2dd4bf",
+        tags: ["syntax"],
+        points: [
+          { text: "前置詞（in / on / at / of など）の後ろには <b>Nounしかこない</b>", tags: ["syntax"] },
+          { text: "⚠️ <b>S + V はこない</b> — 前置詞の後ろにClause（節）は置けない", tags: ["syntax"] },
+          { text: "　❌ in she arrives → ✅ in <span class=\'highlight\'>her arrival</span>（名詞化）", tags: ["syntax"] },
+          { text: "例外: <span class=\'highlight\'>in that</span>（〜という点で）など決まった表現のみthat節可", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "同義語・類義語まとめ",
+        color: "#f5c842",
+        tags: ["vocab"],
+        points: [
+          { text: "<b>in addition to = besides</b>（〜に加えて）: <span class=\'highlight\'>In addition to</span> English, she speaks French.", tags: ["vocab"] },
+          { text: "<b>plentiful = abundant</b>（豊富な）: Food was <span class=\'highlight\'>plentiful / abundant</span> during the harvest season.", tags: ["vocab"] },
+          { text: "<b>in spite of = despite = regardless of</b>（〜にもかかわらず）", tags: ["vocab"] },
+          { text: "　例: <span class=\'highlight\'>In spite of / Despite</span> the rain, they played outside.", tags: ["vocab"] },
+          { text: "　⚠️ in spite of / despite の後ろは <b>Noun / Noun phrase</b>。Clause（S+V）は不可", tags: ["vocab"] },
+          { text: "　→ Clauseが必要なら <span class=\'highlight\'>even though / although</span> を使う", tags: ["vocab"] },
+        ]
+      },
+      {
+        title: "数量表現 — great numbers of / a lot of",
+        color: "#3ecf8e",
+        tags: ["syntax","vocab"],
+        points: [
+          { text: "<b>great numbers of = a great number of</b>: 後ろには <b>可算名詞の複数形のみ</b>", tags: ["syntax","vocab"] },
+          { text: "　例: <span class=\'highlight\'>A great number of</span> students attended the lecture.", tags: ["vocab"] },
+          { text: "<b>a lot of / lots of</b>: <b>可算名詞（複数）・不可算名詞のどちらも可</b>", tags: ["syntax","vocab"] },
+          { text: "　例（可算）: <span class=\'highlight\'>A lot of</span> students were absent.", tags: ["vocab"] },
+          { text: "　例（不可算）: <span class=\'highlight\'>A lot of</span> water was wasted.", tags: ["vocab"] },
+        ]
+      },
+      {
+        title: "Of = Among（文頭・文中の用法）",
+        color: "#f5954a",
+        tags: ["syntax","vocab"],
+        points: [
+          { text: "<b>Of ＋ グループ名詞</b> の形で、of は <b>Among（〜の中で）</b> と同義になる", tags: ["syntax"] },
+          { text: "これは <b>「分割のof（Partitive of）」</b> — グループの中から1つ・一部を取り出すときに使う", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>Of all the students</span>, she is the best.（= Among all the students）", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>Of the three options</span>, this is the easiest.", tags: ["syntax"] },
+          { text: "💡 <b>よく使われるパターン</b>: <span class=\'highlight\'>Of all + 複数名詞</span> ＋ 最上級 の組み合わせ", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>Of all the inventions</span> of the 20th century, the internet was the most influential.", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "Word Nounの後ろには7つのM（修飾）がくる",
+        color: "#f06a6a",
+        tags: ["syntax","verbal"],
+        points: [
+          { text: "Nounの後ろには <b>7種類の修飾語（Modifier）</b> が来うる", tags: ["verbal"] },
+          { text: "　① <b>形容詞節</b>（関係代名詞節）: the book <span class=\'highlight\'>that I bought</span>", tags: ["verbal"] },
+          { text: "　② <b>分詞句</b>（現在分詞・過去分詞）: the man <span class=\'highlight\'>running</span> / the letter <span class=\'highlight\'>written</span> by him", tags: ["verbal"] },
+          { text: "　③ <b>前置詞句</b>: the book <span class=\'highlight\'>on the table</span>", tags: ["verbal"] },
+          { text: "　④ <b>不定詞句</b>（形容詞用法）: something <span class=\'highlight\'>to eat</span>", tags: ["verbal"] },
+          { text: "　⑤ <b>同格のthat節</b>: the fact <span class=\'highlight\'>that he lied</span>", tags: ["verbal"] },
+          { text: "　⑥ <b>同格名詞句</b>（カンマ）: my friend, <span class=\'highlight\'>a doctor</span>, lives in Tokyo", tags: ["verbal"] },
+          { text: "　⑦ <b>前置形容詞</b>: <span class=\'highlight\'>beautiful</span> flower", tags: ["verbal"] },
+        ]
+      },
+      {
+        title: "Function Words（機能語）— Connectors（連結語）",
+        color: "#4f8ef7",
+        tags: ["syntax"],
+        points: [
+          { text: "<b>① 等位接続詞（Coordinating Conjunction）</b>: <span class=\'highlight\'>and / so / for / or / but</span> の5つのみ", tags: ["syntax"] },
+          { text: "　→ 文法的に同等の要素を対等につなぐ", tags: ["syntax"] },
+          { text: "<b>② 従位接続詞（Subordinating Conjunction）</b>: <span class=\'highlight\'>if / when / because / although</span> など", tags: ["syntax"] },
+          { text: "　→ 従属節（副詞節）を作り、主節に意味を付け加える", tags: ["syntax"] },
+          { text: "<b>③ 前置詞＋名詞（Prepositional Phrase）</b>: <b>場所によってAdverbかAdjectiveか決まる</b>", tags: ["syntax"] },
+          { text: "　Noun の後ろ → <b>Adjective</b>（名詞を修飾）", tags: ["syntax"] },
+          { text: "　Verb の後ろ・文頭・文末 → <b>Adverb</b>（動詞・文全体を修飾）", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "Function Words — Correlation（相関語句）",
+        color: "#3ecf8e",
+        tags: ["syntax","verbal"],
+        points: [
+          { text: "<b>not only A but also B</b>: 動詞はBに合わせる", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>Not only she but also they</span> are happy.（they → are）", tags: ["syntax"] },
+          { text: "<b>so ~ that ... = such ~ that ...</b>: とても〜なので...（意味は同じ）", tags: ["syntax"] },
+          { text: "　⚠️ <b>such の後ろはNoun（形容詞+名詞）</b>、so の後ろはAdjective/Adverb", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>so tired that</span> she fell asleep / <span class=\'highlight\'>such a long journey that</span> we needed a rest", tags: ["syntax"] },
+          { text: "<b>A as well as B</b>: 動詞は <b>Aに合わせる</b>（BはおまけのAdditional Info）", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>You</span> as well as I <span class=\'highlight\'>are</span> happy.（主語はYou → are）", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>I</span> as well as you <span class=\'highlight\'>am</span> happy.（主語はI → am）", tags: ["syntax"] },
+          { text: "💡 「you as well as I」で複数に見えるが、<b>動詞はAのみに一致</b>。Bは括弧に入れてもよいくらいの追加情報", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "Function Words — Conjunction Adverb（接続詞的副詞）",
+        color: "#f5c842",
+        tags: ["syntax"],
+        points: [
+          { text: "<b>接続詞的副詞</b>: 2つの文をつなぐ副詞。<b>独立した文（. か ;）で区切る必要あり</b>", tags: ["syntax"] },
+          { text: "代表例: <span class=\'highlight\'>therefore</span>（したがって）/ <span class=\'highlight\'>meanwhile</span>（一方）/ <span class=\'highlight\'>however</span>（しかしながら）", tags: ["syntax"] },
+          { text: "⚠️ コンマだけで2文をつなぐのは <b>Comma Splice（文法エラー）</b>", tags: ["syntax"] },
+          { text: "　❌ He was tired, however he continued.", tags: ["syntax"] },
+          { text: "　✅ He was tired; <span class=\'highlight\'>however,</span> he continued.（セミコロン + however + コンマ）", tags: ["syntax"] },
+          { text: "　✅ He was tired. <span class=\'highlight\'>However,</span> he continued.（ピリオドで文を分ける）", tags: ["syntax"] },
+          { text: "<b>however の位置</b>:", tags: ["syntax"] },
+          { text: "　【文頭】<span class=\'highlight\'>However,</span> I think you are wrong.（後ろにコンマ）", tags: ["syntax"] },
+          { text: "　【文中】I think, <span class=\'highlight\'>however,</span> that you are wrong.（両側をコンマで挟む）", tags: ["syntax"] },
+          { text: "　【文末】I think you are wrong, <span class=\'highlight\'>however.</span>（前にコンマ）", tags: ["syntax"] },
+          { text: "💡 <b>however = no matter how の別用法</b>: <span class=\'highlight\'>However hard</span> you try, you cannot win.（いくら〜しても）", tags: ["syntax"] },
         ]
       }
     ]
