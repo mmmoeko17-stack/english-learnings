@@ -92,9 +92,9 @@
 </div>
 
 <div class="stats-bar">
-  <div class="stat"><div class="stat-num" id="stat-lessons">3</div><div class="stat-label">受講済み回数</div></div>
-  <div class="stat"><div class="stat-num" id="stat-points">72</div><div class="stat-label">蓄積ポイント数</div></div>
-  <div class="stat"><div class="stat-num" id="stat-remain">21</div><div class="stat-label">残り回数</div></div>
+  <div class="stat"><div class="stat-num" id="stat-lessons">4</div><div class="stat-label">受講済み回数</div></div>
+  <div class="stat"><div class="stat-num" id="stat-points">116</div><div class="stat-label">蓄積ポイント数</div></div>
+  <div class="stat"><div class="stat-num" id="stat-remain">20</div><div class="stat-label">残り回数</div></div>
 </div>
 
 <div class="search-wrap">
@@ -111,7 +111,7 @@
 
 <div id="lessons-container"></div>
 <div class="no-results" id="no-results" style="display:none;">該当するメモが見つかりません</div>
-<div class="updated">最終更新: 2026-07-11 ／ Akiが授業メモから自動整理</div>
+<div class="updated">最終更新: 2026-07-20 ／ Akiが授業メモから自動整理</div>
 
 <script>
 const LESSONS = [
@@ -448,6 +448,162 @@ const LESSONS = [
           { text: "　【文中】I think, <span class=\'highlight\'>however,</span> that you are wrong.（両側をコンマで挟む）", tags: ["syntax"] },
           { text: "　【文末】I think you are wrong, <span class=\'highlight\'>however.</span>（前にコンマ）", tags: ["syntax"] },
           { text: "💡 <b>however = no matter how の別用法</b>: <span class=\'highlight\'>However hard</span> you try, you cannot win.（いくら〜しても）", tags: ["syntax"] },
+        ]
+      }
+    ]
+  }
+  ,
+  {
+    num: 4,
+    title: "第4回",
+    date: "2026-07-20",
+    caution: "聞き取りメモを補正・補足済み",
+    topics: [
+      {
+        title: "関係代名詞の目的格 — V3 / V4 / V5",
+        color: "#4f8ef7",
+        tags: ["syntax","verbal"],
+        points: [
+          { text: "目的格の関係代名詞は <b>V3・V4・V5の目的語（O）の位置</b> に来る", tags: ["syntax"] },
+          { text: "<b>V3（S+V+O）</b>: the book <span class=\'highlight\'>that</span> I read（I read <b>the book</b>）", tags: ["syntax"] },
+          { text: "<b>V4（S+V+O+O）</b>: the gift <span class=\'highlight\'>that</span> she gave me（she gave me <b>the gift</b>）", tags: ["syntax"] },
+          { text: "<b>V5（S+V+O+C）</b>: the person <span class=\'highlight\'>that</span> they called a genius（they called <b>the person</b> a genius）", tags: ["syntax"] },
+          { text: "💡 目的格の関係代名詞は <b>省略可能</b>（主格は省略不可）", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "比較級の中に入ってくる語句",
+        color: "#a78bfa",
+        tags: ["syntax","verbal"],
+        points: [
+          { text: "比較級（形容詞/副詞の比較形）と than の間に様々な語句が挿入されることがある", tags: ["syntax"] },
+          { text: "<b>① to不定詞</b>: The product is <span class=\'highlight\'>slower to warm up</span> than similar products.", tags: ["syntax"] },
+          { text: "<b>② 前置詞句</b>: This method is <span class=\'highlight\'>more effective in cold weather</span> than the other.", tags: ["syntax"] },
+          { text: "<b>③ 副詞</b>: She runs <span class=\'highlight\'>faster overall</span> than her teammates.", tags: ["syntax"] },
+          { text: "<b>④ for + Noun</b>: This book is <span class=\'highlight\'>more suitable for beginners</span> than the previous one.", tags: ["syntax"] },
+          { text: "<b>⑤ enough to構文</b>: The box is <span class=\'highlight\'>large enough to hold</span> all the items.（比較対象なしの独立パターン）", tags: ["syntax"] },
+          { text: "<b>⑥ too...to構文</b>: The task is <span class=\'highlight\'>too complex to explain</span> in simple terms.", tags: ["syntax"] },
+          { text: "💡 <b>攻略法</b>: 形容詞/副詞の直後に to不定詞や前置詞句が来ても慌てない。than を探して比較の骨格を掴む", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "不定詞の中に不定詞（to不定詞の入れ子）",
+        color: "#2dd4bf",
+        tags: ["verbal"],
+        points: [
+          { text: "to不定詞の後ろにさらにto不定詞が続く <b>入れ子構造</b> が存在する", tags: ["verbal"] },
+          { text: "例: I want <span class=\'highlight\'>to try to finish</span> it by Friday.", tags: ["verbal"] },
+          { text: "例: She decided <span class=\'highlight\'>to try to learn</span> English seriously.", tags: ["verbal"] },
+          { text: "例: He promised <span class=\'highlight\'>to try to be</span> on time.", tags: ["verbal"] },
+          { text: "例: I need <span class=\'highlight\'>to be able to speak</span> English fluently.（need to + be able to）", tags: ["verbal"] },
+          { text: "例: She seems <span class=\'highlight\'>to want to become</span> a doctor.（seem to + want to）", tags: ["verbal"] },
+          { text: "💡 構造を把握するコツ: 最初のto動詞が <b>主動詞</b>、2つ目のto動詞は <b>その目的語・補語</b> になっている", tags: ["verbal"] },
+        ]
+      },
+      {
+        title: "among / apart from — 前置詞の用法",
+        color: "#f5c842",
+        tags: ["syntax","vocab"],
+        points: [
+          { text: "<b>among</b>: 後ろには <b>3つ以上のNoun</b>（グループの中で）", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>Among</span> the three candidates, she was the most qualified.", tags: ["vocab"] },
+          { text: "　⚠️ 2つのものには among は使えない → <span class=\'highlight\'>between</span> を使う", tags: ["syntax"] },
+          { text: "<b>apart from</b>: <b>from とセット</b> で使う（〜を除いて / 〜に加えて）", tags: ["syntax"] },
+          { text: "　例（〜を除いて）: <span class=\'highlight\'>Apart from</span> the cost, the plan is perfect.", tags: ["vocab"] },
+          { text: "　例（〜に加えて）: <span class=\'highlight\'>Apart from</span> English, she speaks French.", tags: ["vocab"] },
+          { text: "　⚠️ apart 単独では使えない → apart from がセット", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "受け身（Passive Voice）の構造",
+        color: "#f06a6a",
+        tags: ["syntax","tense"],
+        points: [
+          { text: "受け身 = <b>通常文（能動態）の目的語（O）が主語（S）になった文</b>", tags: ["syntax"] },
+          { text: "能動: <span class=\'highlight\'>The company</span> established the standards.（S = The company）", tags: ["syntax"] },
+          { text: "受動: <span class=\'highlight\'>The standards</span> were established by the company.（旧Oが新S）", tags: ["syntax"] },
+          { text: "構造: S + <span class=\'highlight\'>be + 過去分詞</span>（+ by + 行為者）", tags: ["syntax"] },
+          { text: "💡 <b>by以下は省略可能</b>（誰がやったか不明・重要でない場合）", tags: ["syntax"] },
+          { text: "　例: The report was submitted.（誰が提出したか言わない）", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "動名詞のみを取る動詞（不定詞NG）",
+        color: "#3ecf8e",
+        tags: ["syntax","vocab"],
+        points: [
+          { text: "動詞によって後ろに来るのが <b>動名詞のみ・不定詞のみ・両方可</b> に分かれる", tags: ["syntax"] },
+          { text: "<b>動名詞のみ（不定詞NG）の主要動詞:</b>", tags: ["vocab"] },
+          { text: "　<span class=\'highlight\'>enjoy / avoid / finish / keep / mind / consider / suggest / recommend</span>", tags: ["vocab"] },
+          { text: "　<span class=\'highlight\'>practice / imagine / miss / include / give up / put off / postpone</span>", tags: ["vocab"] },
+          { text: "　<span class=\'highlight\'>admit / deny / resist / risk / escape / can\'t help</span>", tags: ["vocab"] },
+          { text: "💡 <b>覚え方①（意味で覚える）</b>: 動名詞は <b>過去・現在進行中の行為</b> を指すことが多い → 「すでにやっていること・経験」系の動詞と相性が良い", tags: ["vocab"] },
+          { text: "💡 <b>覚え方②（頭文字）</b>: <span class=\'highlight\'>MEGAFEPS</span> — Mind / Enjoy / Give up / Avoid / Finish / Escape / Practice / Stop", tags: ["vocab"] },
+          { text: "💡 <b>覚え方③（時間軸）</b>: 動名詞 = 過去〜現在ベクトル / 不定詞 = 現在〜未来ベクトル → <b>すでに起きていること・経験系の動詞 → 動名詞</b>", tags: ["vocab"] },
+          { text: "　例: I <span class=\'highlight\'>enjoy swimming</span>.（泳ぐことを楽しんでいる = 現在進行の経験）", tags: ["vocab"] },
+          { text: "　例: I <span class=\'highlight\'>want to swim</span>.（泳ぎたい = 未来の希望）", tags: ["vocab"] },
+        ]
+      },
+      {
+        title: "need to の助動詞的用法",
+        color: "#f5954a",
+        tags: ["syntax","tense"],
+        points: [
+          { text: "<b>need to</b> は <b>準助動詞（semi-modal）</b> として扱われることがある", tags: ["syntax"] },
+          { text: "真の助動詞（can/will/must/shall/may）は <b>主語が何であっても形が変わらない（-sなし）</b>", tags: ["syntax"] },
+          { text: "need to の2つの使われ方:", tags: ["syntax"] },
+          { text: "　【準助動詞用法】He <span class=\'highlight\'>need not</span> worry.（-sなし・主にイギリス英語・フォーマル）", tags: ["syntax"] },
+          { text: "　【通常動詞用法】He <span class=\'highlight\'>needs to</span> go.（-sあり・現代標準英語）", tags: ["syntax"] },
+          { text: "⚠️ <b>need something（名詞）</b>: 通常動詞 → She <span class=\'highlight\'>needs</span> help.（-s必要）", tags: ["syntax"] },
+          { text: "<b>need to V（時間軸）</b>: 今必要 → V以降は <b>今後の行動</b>", tags: ["tense"] },
+          { text: "　例: You <span class=\'highlight\'>need to submit</span> the report.（これから提出する必要がある）", tags: ["tense"] },
+          { text: "<b>need to have + 過去分詞（時間軸）</b>: 今必要 → V以降は <b>すでに完了している必要がある</b>", tags: ["tense"] },
+          { text: "　例: You <span class=\'highlight\'>need to have submitted</span> the report by 5pm.（5時までに提出済みである必要がある）", tags: ["tense"] },
+        ]
+      },
+      {
+        title: "前置詞 vs 接続詞 — 見極め方と一覧",
+        color: "#7c5cbf",
+        tags: ["syntax","vocab"],
+        points: [
+          { text: "<b>見極めの鉄則</b>: 直後が <b>Noun → 前置詞</b> / 直後が <b>S+V → 接続詞</b>", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>Despite</span> the rain, ...（rain = Noun → 前置詞）", tags: ["syntax"] },
+          { text: "　例: <span class=\'highlight\'>Although</span> it was raining, ...（it was raining = S+V → 接続詞）", tags: ["syntax"] },
+          { text: "<b>【前置詞のみ】</b> despite / in spite of / during / because of / due to / opposite / among / apart from / regarding", tags: ["vocab"] },
+          { text: "<b>【接続詞のみ】</b> although / even though / though / because / unless / whereas", tags: ["vocab"] },
+          { text: "<b>【両方使える（要注意）】</b> before / after / since / until / while / as", tags: ["vocab"] },
+          { text: "　例: <span class=\'highlight\'>before noon</span>（前置詞）vs <span class=\'highlight\'>before she arrived</span>（接続詞）", tags: ["syntax"] },
+          { text: "💡 <b>TOEIC頻出ペア</b>: despite ↔ although / because of ↔ because / during ↔ while", tags: ["vocab"] },
+          { text: "　<span class=\'highlight\'>opposite</span>は前置詞としても機能 → directly opposite the station ✅", tags: ["vocab"] },
+        ]
+      },
+      {
+        title: "分詞形容詞 — -ing vs -ed の瞬時判断法",
+        color: "#f5c842",
+        tags: ["syntax","verbal"],
+        points: [
+          { text: "名詞の前に分詞を置くとき: <b>名詞がその動作を「する」か「される」か</b> で決まる", tags: ["verbal"] },
+          { text: "　名詞が動作を <b>する</b> → <b>現在分詞（-ing）</b>", tags: ["verbal"] },
+          { text: "　名詞が動作を <b>される</b> → <b>過去分詞（-ed）</b>", tags: ["verbal"] },
+          { text: "　例: <span class=\'highlight\'>established</span> standards（基準が確立される ✅）vs <span class=\'highlight\'>establishing</span> standards（基準が確立する ❌）", tags: ["verbal"] },
+          { text: "💡 <b>全訳不要の攻略法</b>: 空欄直後の名詞だけ見て「この名詞は動作をする？される？」と一問だけ自問する", tags: ["verbal"] },
+          { text: "<b>追加ルール: 感情・経験を持てる名詞かどうか</b>", tags: ["verbal"] },
+          { text: "　人・動物（感情あり）→ -ing / -ed どちらも文脈次第で成立", tags: ["verbal"] },
+          { text: "　　例: <span class=\'highlight\'>surprised employees</span>（驚かされた従業員）✅ / <span class=\'highlight\'>surprising results</span>（驚かせる結果）✅", tags: ["verbal"] },
+          { text: "　無生物（感情なし）→ -ed は意味が通じない", tags: ["verbal"] },
+          { text: "　　例: surprised results（結果は驚けない）❌ → <span class=\'highlight\'>surprising results</span> のみ ✅", tags: ["verbal"] },
+        ]
+      },
+      {
+        title: "in working condition — 品詞分析",
+        color: "#3ecf8e",
+        tags: ["syntax","verbal"],
+        points: [
+          { text: "例文: your purchase will arrive <span class=\'highlight\'>in working condition</span>", tags: ["syntax"] },
+          { text: "<b>working 単体</b> → <b>Adjective</b>（conditionというNounを修飾）", tags: ["verbal"] },
+          { text: "<b>in working condition 全体</b> → <b>Adverb</b>（arrive を修飾する前置詞句）", tags: ["syntax"] },
+          { text: "💡 第2回の復習: <b>前置詞句がVerbの後ろに来るとAdverbとして機能する</b>", tags: ["syntax"] },
+          { text: "→ 「working = Adverb」という解釈は誤り。<b>working = Adjective / 前置詞句全体 = Adverb</b>", tags: ["syntax"] },
         ]
       }
     ]
