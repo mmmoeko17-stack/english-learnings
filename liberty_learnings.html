@@ -1768,7 +1768,9 @@ const LESSONS = [
           { text: "　例: <span class=\'highlight\'>Once the meeting starts,</span> please turn off your phone.", tags: ["syntax"] },
           { text: "<b>If とほぼ同義になることが多い</b>（条件・タイミングが重なる場合）", tags: ["vocab"] },
           { text: "　例: <span class=\'highlight\'>Once / If</span> you agree, we can proceed.（同意すれば進められる）", tags: ["vocab"] },
-          { text: "💡 Once はIfより「〜した瞬間・完了のタイミング」のニュアンスが強い。When に近い場面も多い", tags: ["vocab"] },
+          { text: "💡 <b>本来の意味はwhen/as soon as（時間的接続詞）</b>: 「〜したらすぐに/〜した時点で」が原義", tags: ["vocab"] },
+          { text: "　例: <span class=\'highlight\'>Once the rain stops,</span> we will leave.（雨が止んだらすぐに出発する）", tags: ["vocab"] },
+          { text: "⚠️ <b>IfとOnceの厳密な違い</b>: If = 条件（起きるかどうか不確か）/ Once = 時間的完了（起きることを前提にそのタイミング）", tags: ["vocab"] },
         ]
       },
       {
@@ -1782,7 +1784,10 @@ const LESSONS = [
           { text: "<b>enough to → so ~ that S can V に書き換え可能</b>", tags: ["verbal"] },
           { text: "　例: She is smart <span class=\'highlight\'>enough to solve</span> it.", tags: ["verbal"] },
           { text: "　　→ She is <span class=\'highlight\'>so smart that she can solve</span> it.", tags: ["verbal"] },
-          { text: "💡 <b>共通のポイント</b>: to不定詞の「目的・結果」の意味を so that の接続詞で明示する書き換え", tags: ["verbal"] },
+          { text: "<b>too ~ to → so ~ that S can't V（反対パターン）</b>", tags: ["verbal"] },
+          { text: "　例: He is <span class=\'highlight\'>too tired to work</span>.", tags: ["verbal"] },
+          { text: "　　→ He is <span class=\'highlight\'>so tired that he can\'t work</span>.", tags: ["verbal"] },
+          { text: "💡 <b>セットで覚える</b>: enough to（〜できるほど）→ so~that can / too~to（〜できないほど）→ so~that can\'t", tags: ["verbal"] },
         ]
       },
       {
@@ -1801,6 +1806,8 @@ const LESSONS = [
           { text: "　<b>how to prepare containers</b> ✅ — how は副詞なので containers が O として機能できる", tags: ["syntax"] },
           { text: "　<b>what to prepare</b> ❌ — what が O の役割を担うため、後ろに containers を置くと O が2つになり文法的に不成立", tags: ["syntax"] },
           { text: "💡 <b>見極め法</b>: 後ろに O（名詞）が続いている → what はNG（Oが重複）/ how / when / where を使う", tags: ["syntax"] },
+          { text: "⚠️ <b>why to V は存在しない</b> — 疑問不定詞で使えるのは whether / what / where / when / how / who(m) の6つのみ", tags: ["syntax"] },
+          { text: "　💡 「なぜすべきか」は理由を説明するものなので、to不定詞の句には収まらない", tags: ["syntax"] },
         ]
       },
       {
@@ -1825,9 +1832,11 @@ const LESSONS = [
           { text: "<b>V3（S + V + O）の受け身</b>: O が主語に → 後ろは Adverb のみ", tags: ["syntax"] },
           { text: "　能動: He <span class=\'highlight\'>wrote</span> the report.", tags: ["syntax"] },
           { text: "　受け身: The report <span class=\'highlight\'>was written</span> carefully.（后ろは副詞 carefully のみ）", tags: ["syntax"] },
-          { text: "<b>V4（S + V + O1 + O2）の受け身</b>: O1 が主語に → O2 がそのまま残る", tags: ["syntax"] },
+          { text: "<b>V4（S + V + O1 + O2）の受け身</b>: <b>2通り</b>作れる（どちらのOを主語にするかで変わる）", tags: ["syntax"] },
           { text: "　能動: She <span class=\'highlight\'>gave</span> him a gift.", tags: ["syntax"] },
-          { text: "　受け身: He <span class=\'highlight\'>was given</span> a gift.（O2 の a gift が残る）", tags: ["syntax"] },
+          { text: "　受け身①: He <span class=\'highlight\'>was given</span> a gift.（O1のhimを主語に → O2のa giftが残る）", tags: ["syntax"] },
+          { text: "　受け身②: A gift <span class=\'highlight\'>was given to</span> him.（O2のa giftを主語に → O1はto+名詞で残る）", tags: ["syntax"] },
+          { text: "　💡 どちらも正しい。①のほうが自然で頻出", tags: ["syntax"] },
           { text: "<b>V5（S + V + O + C）の受け身</b>: O が主語に → C がそのまま残る", tags: ["syntax"] },
           { text: "　能動: They <span class=\'highlight\'>called</span> him a genius.", tags: ["syntax"] },
           { text: "　受け身: He <span class=\'highlight\'>was called</span> a genius.（C の a genius が残る）", tags: ["syntax"] },
