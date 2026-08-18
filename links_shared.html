@@ -1,0 +1,844 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JP CBCC Links</title>
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --card: #ffffff;
+    --accent: #232f3e;
+    --orange: #ff9900;
+    --blue: #0070b8;
+    --green: #067d62;
+    --purple: #5a3e85;
+    --gray: #6b7280;
+    --border: #e5e7eb;
+    --radius: 10px;
+    --shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: #1a1a1a;
+    padding: 32px 24px 60px;
+  }
+  header {
+    max-width: 900px;
+    margin: 0 auto 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  header span {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-left: auto;
+  }
+  .grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .section {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .section-header {
+    padding: 12px 16px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: white;
+  }
+  .section-header.marquetry { background: var(--accent); }
+  .section-header.odcv      { background: var(--blue); }
+  .section-header.pd26      { background: var(--orange); color: #111; }
+  .section-header.quip      { background: var(--green); }
+  .section-header.amazon    { background: var(--purple); }
+  .links { padding: 8px 0; }
+  .link-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 16px;
+    text-decoration: none;
+    color: #1a1a1a;
+    transition: background 0.15s;
+    border-bottom: 1px solid var(--border);
+  }
+  .link-item:last-child { border-bottom: none; }
+  .link-item:hover { background: #f0f4ff; }
+  .link-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .link-text {}
+  .link-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .link-desc {
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 4px;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+  .badge-red { background: #fee2e2; color: #b91c1c; }
+  .badge-green { background: #dcfce7; color: #166534; }
+  .section-header.cid { background: #334155; }
+  .cid-item {
+    padding: 9px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cid-item:last-child { border-bottom: none; }
+  .cid-account {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+  .cid-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+  }
+  .cid-label {
+    font-size: 0.68rem;
+    color: var(--gray);
+    width: 88px;
+    flex-shrink: 0;
+  }
+  .cid-value {
+    font-size: 0.78rem;
+    font-family: monospace;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 1px 7px;
+    cursor: pointer;
+    user-select: all;
+    transition: background 0.15s;
+  }
+  .cid-value:hover { background: #dbeafe; }
+  .cid-value.copied { background: #dcfce7; border-color: #86efac; }
+  .local-tools-bar {
+    max-width: 900px;
+    margin: -12px auto 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .local-tools-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #1a6e4a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .local-tool-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #166534;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: background 0.15s;
+  }
+  .local-tool-chip:hover { background: #dcfce7; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🔗 JP CBCC Links</h1>
+  <span>2026-08-03 更新</span>
+</header>
+
+
+
+<div class="grid">
+
+  <!-- Marquetry -->
+  <div class="section">
+    <div class="section-header marquetry">🛠 DP/Maple</div>
+    <div class="links">
+      <a class="link-item" href="https://www.amazon.co.jp/dp/B08P4CFBK6" target="_blank">
+        <span class="link-icon">💳</span>
+        <div class="link-text">
+          <div class="link-title">CBCC DP</div>
+          <div class="link-desc">Amazon Mastercard 詳細ページ</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://marquetry-fe.aka.amazon.com/products/AMZ_JP_SMCC_ZEN" target="_blank">
+        <span class="link-icon">🗂️</span>
+        <div class="link-text">
+          <div class="link-title">Marquetry Prod</div>
+          <div class="link-desc">バナー・DP管理 (Production)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://marquetry-fe.integ.amazon.com/products/AMZ_JP_SMCC_ZEN" target="_blank">
+        <span class="link-icon">🗂️</span>
+        <div class="link-text">
+          <div class="link-title">Marquetry Devo</div>
+          <div class="link-desc">バナー・DP管理 (Development / Integ)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://w.amazon.com/bin/view/MAPLE/" target="_blank">
+        <span class="link-icon">📖</span>
+        <div class="link-text">
+          <div class="link-title">Maple Wiki</div>
+          <div class="link-desc">MAPLE 内部 Wiki</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://w.amazon.com/bin/view/JP_Consumer_Payments/Marketing/CBCC" target="_blank">
+        <span class="link-icon">📖</span>
+        <div class="link-text">
+          <div class="link-title">CBCC Marketing Wiki</div>
+          <div class="link-desc">JP Consumer Payments / Marketing / CBCC</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://console.harmony.a2z.com/aim/programs/JP_CBCC_CBCC_ACQUISITION" target="_blank">
+        <span class="link-icon">🎯</span>
+        <div class="link-text">
+          <div class="link-title">AIM</div>
+          <div class="link-desc">JP CBCC Acquisition — AIM Program</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- New Template DP -->
+  <div class="section">
+    <div class="section-header" style="background:#7c3aed;">🎨 New Template DP</div>
+    <div class="links">
+      <a class="link-item" href="https://amazon-my.sharepoint.com/personal/mmoeko_amazon_co_jp/_layouts/15/Doc.aspx?sourcedoc=%2Fpersonal%2Fmmoeko_amazon_co_jp%2FDocuments%2FCBCC_DP_New_Template_Test_Design.docx&action=default" target="_blank">
+        <span class="link-icon">📝</span>
+        <div class="link-text">
+          <div class="link-title">JP Test Design</div>
+          <div class="link-desc">CBCC DP New Template Test Design (OneDrive)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://www.figma.com/design/2w7w24QWPE8WKtCmnkIORX/DP--Detail-Page-?node-id=3384-8278&t=0pTszRbry0mEqatS-0" target="_blank">
+        <span class="link-icon">🖼️</span>
+        <div class="link-text">
+          <div class="link-title">JP Mockup</div>
+          <div class="link-desc">DP Detail Page Figma mockup</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://design.amazon.com/styleguide/21F3D57CA216/maple-cx-guidelines/landing-page-cx-guidelines/tile-templates/primary-tile---two-column/" target="_blank">
+        <span class="link-icon">📐</span>
+        <div class="link-text">
+          <div class="link-title">Brand Portal</div>
+          <div class="link-desc">MAPLE CX Guidelines — Primary Tile Two Column</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://www.figma.com/design/EcdzdEpJjeWdlO4KGvEAph/MAPLE-Landing-Page-Tile-Template-Library?node-id=214-1454&p=f&t=CiCBAfMF8GVz51MI-0" target="_blank">
+        <span class="link-icon">🖼️</span>
+        <div class="link-text">
+          <div class="link-title">Design Template</div>
+          <div class="link-desc">MAPLE Landing Page Tile Template Library (Figma)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://quip-amazon.com/deIMABOsKsbb/L7-Review-MAPLE-Multi-slot-Primary-Tile-BRD" target="_blank">
+        <span class="link-icon">📋</span>
+        <div class="link-text">
+          <div class="link-title">Business Review (US)</div>
+          <div class="link-desc">L7 Review — MAPLE Multi-slot Primary Tile BRD (Quip)</div>
+        </div>
+      </a>
+          <a class="link-item" href="https://amazon-my.sharepoint.com/personal/mmoeko_amazon_co_jp/_layouts/15/Doc.aspx?sourcedoc=%2Fpersonal%2Fmmoeko_amazon_co_jp%2FDocuments%2FMAPLE_Primary_Tile_BRD_JP.docx&action=default" target="_blank">
+        <span class="link-icon">📝</span>
+        <div class="link-text">
+          <div class="link-title">US BRD Japanese Summary</div>
+          <div class="link-desc">MAPLE Primary Tile BRD — JP サマリー (OneDrive)</div>
+        </div>
+      </a>
+  </div>
+  </div>
+
+  <!-- KTLO -->
+  <div class="section">
+    <div class="section-header" style="background:#dc2626;">⚙️ KTLO</div>
+    <div class="links">
+      <a class="link-item" href="https://t.corp.amazon.com/issues?q=%7B%22AND%22%3A%7B%22status%22%3A%7B%22OR%22%3A%5B%22Assigned%22%2C%7B%22OR%22%3A%5B%22Researching%22%2C%7B%22OR%22%3A%5B%22Work%20In%20Progress%22%2C%22Pending%22%5D%7D%5D%7D%5D%7D%2C%22assignedGroup%22%3A%22JP%20CBCC%20Marketing%22%7D%7D" target="_blank">
+        <span class="link-icon">🎫</span>
+        <div class="link-text">
+          <div class="link-title">CS ticket summary</div>
+          <div class="link-desc">JP CBCC Marketing — Open tickets (T.corp)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://quip-amazon.com/HOtTAsA4wqjF/CBCC-Campaign-ticket-handling" target="_blank">
+        <span class="link-icon">🎫</span>
+        <div class="link-text">
+          <div class="link-title">CS ticket handling</div>
+          <div class="link-desc">CBCC Campaign ticket handling (Quip)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/sites/APJ/Shared%20Documents/Forms/AllItems.aspx?or=WORD%2DWEB%2EBODY%2ENT&ct=1785303693751&FolderCTID=0x01200070D959F264CE4945A7D68C7DD20A8874&id=%2Fsites%2FAPJ%2FShared%20Documents%2FCBCC%2FMarketing%2FCS%20ticket%20Automation" target="_blank">
+        <span class="link-icon">📁</span>
+        <div class="link-text">
+          <div class="link-title">CS ticket automation sharepoint</div>
+          <div class="link-desc">CBCC / Marketing / CS ticket Automation (SharePoint)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/:x:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7BD4C4BEFD-6E8A-4CC9-BF89-F135079B50E8%7D&file=JP_CBCC_Acquisition_Funnel_Report_LATEST.xlsx&action=default&mobileredirect=true" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">Acquisition Funnel Report Daily</div>
+          <div class="link-desc">JP CBCC Acquisition Funnel Report LATEST (SharePoint)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/:x:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7BEE97B960-2F7A-4D65-B259-B6AE9EA95A2F%7D&file=JP%20CBCC%20Marketing%20Acquisition%20BAU%20%26%20KTLO%20Work.xlsx&action=default&mobileredirect=true" target="_blank">
+        <span class="link-icon">📋</span>
+        <div class="link-text">
+          <div class="link-title">KTLO Link</div>
+          <div class="link-desc">JP CBCC Marketing Acquisition BAU & KTLO Work</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/:x:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7BFBD52FD0-35FF-4AD0-828D-A5A453E0C902%7D&file=APJ_MAPLE%20Impression_Share.xlsx&action=default&mobileredirect=true" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">Maple Imp Share</div>
+          <div class="link-desc">APJ MAPLE Impression Share</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/:x:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7B4CBCA008-1102-4292-A83F-F6633F2D3DA9%7D&file=2026_JP_CBCC_Forecast_File_Act.xlsx&action=default&mobileredirect=true&CID=9401508A-DE6F-4BB3-9A4D-8D19A24FD293&wdLOR=c4AE5952A-E8B9-480A-82C4-1682097CC7D3" target="_blank">
+        <span class="link-icon">📈</span>
+        <div class="link-text">
+          <div class="link-title">CBCC Fcst</div>
+          <div class="link-desc">2026 JP CBCC Forecast File</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/:x:/r/sites/APJ/Shared%20Documents/CBCC/Business%20Reviews/CBCC_MBR%26QBR/2026/JP_CBCC_MBR_Appendix_Template_V2.xlsx?d=wb8c15cd7a62f4ecf8fb8dd208642f76d&csf=1&web=1&e=EsZG1y" target="_blank">
+        <span class="link-icon">📋</span>
+        <div class="link-text">
+          <div class="link-title">MBR ACQ Table</div>
+          <div class="link-desc">JP CBCC MBR Appendix Template (SharePoint)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://w.amazon.com/bin/view/JP_Consumer_Payments/Marketing/CBCC/SQL_lists/#HByPlacementsandContentsidsperformance" target="_blank">
+        <span class="link-icon">🔍</span>
+        <div class="link-text">
+          <div class="link-title">よく使うクエリ</div>
+          <div class="link-desc">JP Consumer Payments / CBCC SQL Lists</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://monitorportal.amazon.com/igraph?SchemaName1=Service&DataSet1=Prod&Marketplace1=FEAmazon&HostGroup1=ALL&Host1=ALL&ServiceName1=Katal.Betsy-JpCbcc.Application&MethodName1=ApplicationEvent&Client1=katal&MetricClass1=NONE&Instance1=NONE&Metric1=ABOUT_YOURSELF_PAGE_HIT&Period1=OneHour&Stat1=n&LiveData1=true&Label1=Page%201%3A%20About%20Yourself%20page&Visible1=false&UserLabel1=Page%201%3A%20About%20Yourself%20page&SchemaName2=Service&Metric2=ADDRESS_AND_CONTACT_DETAILS_PAGE_HIT&Label2=Page%202%3A%20Address%20and%20Contact%20Details%20page&UserLabel2=Page%202%3A%20Address%20and%20Contact%20Details%20page&SchemaName3=Service&Metric3=FAMILY_AND_HOUSING_PAGE_HIT&Label3=Page%203%3A%20Family%20and%20Housing%20page&UserLabel3=Page%203%3A%20Family%20and%20Housing%20page&SchemaName4=Service&Metric4=OCCUPATION_PAGE_HIT&Label4=Page%204%3A%20Occupation%20page&UserLabel4=Page%204%3A%20Occupation%20page&SchemaName5=Service&Metric5=ABOUT_NEW_CARD_PAGE_HIT&Label5=Page%205%3A%20About%20New%20Card%20page&UserLabel5=Page%205%3A%20About%20New%20Card%20page&SchemaName6=Service&Metric6=REVIEW_DETAILS_PAGE_HIT&Label6=Page%206%3A%20Review%20Details%20page&UserLabel6=Page%206%3A%20Review%20Details%20page&SchemaName7=Service&Metric7=SUBMIT_CLICK&Label7=Submit%20Click&Visible7=true&UserLabel7=Submit%20Click&SchemaName8=Service&Metric8=DIRECT_DEBIT_REGISTRATION_CLICK&Label8=Direct%20Debit%20Registration%20button%20click&Visible8=false&UserLabel8=Direct%20Debit%20Registration%20button%20click&SchemaName9=Service&Metric9=THANK_YOU_PAGE_HIT&Label9=Thank%20You%20page&UserLabel9=Thank%20You%20page&HeightInPixels=500&WidthInPixels=500&GraphTitle=Page%20Hits%20%3A%3A%20Overall&DecoratePoints=true&Palette=cbf&GraphType=zoomer&TZ=JST@TZ%3A%20JST&StartTime1=-P14D&EndTime1=-PT0H" target="_blank">
+        <span class="link-icon">📡</span>
+        <div class="link-text">
+          <div class="link-title">Application Flow Real Data</div>
+          <div class="link-desc">Monitor Portal — Application Page Hits (JST)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://monitorportal.amazon.com/igraph?SchemaName1=Service&DataSet1=prod&Marketplace1=FEAmazon&HostGroup1=ALL&Host1=ALL&ServiceName1=LaprasHexService&MethodName1=ALL&Client1=ALL&MetricClass1=LandingPageId&Instance1=B08P4CFBK6-desktop&Metric1=SlotImpressions%3AMAPLE-S-primary&Period1=OneHour&Stat1=n&LiveData1=true&Label1=B08P4CFBK6-desktop&SchemaName2=Service&Instance2=B08P4CFBK6-mobile&Label2=B08P4CFBK6-mobile&HeightInPixels=400&WidthInPixels=665&GraphTitle=Hourly%2BImpressions%2Bfor%2BSlot%3A%2BPrimary%2Bslot&DecoratePoints=true&GraphType=zoomer&TZ=JST@TZ%3A%20JST&LabelLeft=Impressions&StartTime1=-P7D&EndTime1=-PT0H" target="_blank">
+        <span class="link-icon">📡</span>
+        <div class="link-text">
+          <div class="link-title">DP Impression Real Data</div>
+          <div class="link-desc">Monitor Portal — DP Hourly Impressions (JST)</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="section">
+    <div class="section-header" style="background:#0e7490;">📊 Dashboard</div>
+    <div class="links">
+      <a class="link-item" href="https://us-east-1.quicksight.aws.amazon.com/sn/account/amazonbi/dashboards/72706d26-5611-4629-9764-83d8419ddb8a/sheets/72706d26-5611-4629-9764-83d8419ddb8a_30d205ce-7314-40a3-b8c1-dd6348fa1729" target="_blank">
+        <span class="link-icon">📈</span>
+        <div class="link-text">
+          <div class="link-title">Placement Imp</div>
+          <div class="link-desc">QuickSight — Placement Impression</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://us-east-1.quicksight.aws.amazon.com/sn/account/amazonbi/accounts/764946308314/dashboards/4c51b189-dbda-4be9-b54a-63f75b8895dd/sheets/4c51b189-dbda-4be9-b54a-63f75b8895dd_ea766358-60bd-460e-b15e-3d4faddc0c07?sso_login=true" target="_blank">
+        <span class="link-icon">📉</span>
+        <div class="link-text">
+          <div class="link-title">Application Funnel</div>
+          <div class="link-desc">QuickSight — Application Funnel</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://us-east-1.quicksight.aws.amazon.com/sn/account/amazonbi/accounts/764946308314/dashboards/b82679a0-302d-4ca7-83c7-2f4caef78601/sheets/b82679a0-302d-4ca7-83c7-2f4caef78601_892247d5-810d-4409-a6b9-478d4b5c172a" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">Maple Win Rate</div>
+          <div class="link-desc">QuickSight — Maple Win Rate</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://us-east-1.quicksight.aws.amazon.com/sn/account/amazonbi/dashboards/3d6abb56-e1b2-40a9-9254-3fbdfa9edcfb/sheets/3d6abb56-e1b2-40a9-9254-3fbdfa9edcfb_473584f8-af16-4fb2-bbd0-1e413a981027" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">Off Maple Imp</div>
+          <div class="link-desc">QuickSight — Off Maple Impression</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://us-east-1.quicksight.aws.amazon.com/sn/account/amazonbi/dashboards/cac0c508-46b8-487b-9ff3-5e078f512720/sheets/cac0c508-46b8-487b-9ff3-5e078f512720_2ab53afe-5260-4faf-a9db-164dfc8eee6c" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">Usage</div>
+          <div class="link-desc">QuickSight — Usage</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://us-east-1.quicksight.aws.amazon.com/sn/account/amazonbi/dashboards/48c5d2cf-62c7-424d-9d93-c9df9190f521/sheets/48c5d2cf-62c7-424d-9d93-c9df9190f521_45ba41ff-8b74-4a24-95fc-eb90fdd89608?sso_login=true#" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">RAF</div>
+          <div class="link-desc">QuickSight — RAF</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ETL -->
+  <div class="section">
+    <div class="section-header" style="background:#065f46;">🔄 ETL</div>
+    <div class="links">
+      <a class="link-item" href="https://datacentral.a2z.com/etl-manager/profiles/extract/data-feed/8567303" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">Weekly</div>
+          <div class="link-desc">ETL Manager — Weekly data feed</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://datacentral.a2z.com/etl-manager/profiles/extract/data-feed/14501976" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">Monthly</div>
+          <div class="link-desc">ETL Manager — Monthly data feed</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://datacentral.a2z.com/etl-manager/profiles/extract/data-feed/14510884" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">Daily</div>
+          <div class="link-desc">ETL Manager — Daily data feed</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://datacentral.a2z.com/etl-manager/profiles/extract/data-feed/44047046" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">Daily - Trailing 3 month</div>
+          <div class="link-desc">ETL Manager — Daily Trailing 3 month data feed</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://datacentral.a2z.com/etl-manager/profiles/extract/data-feed/14531707" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">DP visit (Unique)</div>
+          <div class="link-desc">ETL Manager — DP visit Unique data feed</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://datacentral.a2z.com/etl-manager/profiles/extract/data-feed/14529098" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">Maple SOV</div>
+          <div class="link-desc">ETL Manager — Maple SOV data feed</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- PD26 -->
+  <div class="section">
+    <div class="section-header pd26" style="color:#fff;">🎯 Campaign</div>
+    <div class="links">
+      <a class="link-item" href="https://amazon.sharepoint.com/:w:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7B126C9719-A2A0-427D-AEC3-7616DD9029C8%7D&file=JP%20CBCC%20PD26%20Retrospective%20v1.docx&action=default&mobileredirect=true" target="_blank">
+        <span class="link-icon">📝</span>
+        <div class="link-text">
+          <div class="link-title">PD26 Retrospective</div>
+          <div class="link-desc">JP CBCC PD26 Retrospective v1 (SharePoint)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://www.amazon.co.jp/b?node=219874812051" target="_blank">
+        <span class="link-icon">🛒</span>
+        <div class="link-text">
+          <div class="link-title">PD26 LP<span class="badge badge-green">公開中</span></div>
+          <div class="link-desc">Amazon Mastercard PD26 キャンペーンLP</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://console.harmony.a2z.com/media-central/search-browse/browse/9/CBCC/Event/Primeday_2026" target="_blank">
+        <span class="link-icon">🖼️</span>
+        <div class="link-text">
+          <div class="link-title">PD26 Media Central</div>
+          <div class="link-desc">Media Central — CBCC / Primeday 2026</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/sites/APJ/Shared%20Documents/CBCC/Marketing/MDE%20&%20HVE/2026%20PD26/2026%20PD%20CBCC%20Traffic%20Drivers.xlsx?web=1" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">PD26 Preparation</div>
+          <div class="link-desc">2026 PD CBCC Traffic Drivers (SharePoint)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/:x:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7BA17F6573-C2FB-463E-B8C8-5D97718EB7EE%7D&file=PD26%20Forecasts.xlsx&wdLOR=cB1498536-157F-447A-824C-977FFFEB496F&action=default&mobileredirect=true" target="_blank">
+        <span class="link-icon">📈</span>
+        <div class="link-text">
+          <div class="link-title">PD26 Estimation</div>
+          <div class="link-desc">PD26 Forecasts (SharePoint)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://design.amazon.com/styleguide/724BA9F0B089/homepage-design-guidelines/desktop-guidelines/desktop-tall-hero/" target="_blank">
+        <span class="link-icon">🎨</span>
+        <div class="link-text">
+          <div class="link-title">Brand Portal</div>
+          <div class="link-desc">Amazon Design — Brand Guidelines</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/:x:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7B794844e6-f220-4eb3-a24e-ab0c5bd2741a%7D&action=edit&wdinitialsession=19f6af10-6a76-b58b-fc0d-d4a493c12046&wdrldsc=3&wdrldc=1&wdrldr=OperationStuck" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">PD26 Daily Performance</div>
+          <div class="link-desc">Campaign Act Progress (SharePoint)</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- New Accounts Recovery -->
+  <div class="section">
+    <div class="section-header" style="background:#7c3aed;">🔍 New Accounts Recovery</div>
+    <div class="links">
+      <a class="link-item" href="https://amazon.sharepoint.com/:w:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7BE064A02F-E95B-43A5-A684-1860C49E8261%7D&file=JP_CBCC_Acquisition_Decline_Deep_Dive_v3.docx&action=default&mobileredirect=true" target="_blank">
+        <span class="link-icon">📄</span>
+        <div class="link-text">
+          <div class="link-title">Acquisition Decline Deep Dive</div>
+          <div class="link-desc">JP CBCC Acquisition Decline Deep Dive (SharePoint)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://quip-amazon.com/ZedCAAYFV9Rt/JP-CBCC-Acquisitions-Drop-Dive-Deep-1006" target="_blank">
+        <span class="link-icon">📋</span>
+        <div class="link-text">
+          <div class="link-title">Acquisitions Drop Dive Deep</div>
+          <div class="link-desc">JP CBCC Acquisitions Drop Dive Deep (Quip)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://quip-amazon.com/ibQwAwrc524V/JP-CBCC-Acquisition-Mitigation-Plan-Weekly-Status#temp:C:BdBd431f5bee4484b76865ad3700" target="_blank">
+        <span class="link-icon">📋</span>
+        <div class="link-text">
+          <div class="link-title">Status Update Summary</div>
+          <div class="link-desc">JP CBCC Acquisition Mitigation Plan Weekly Status (Quip)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://quip-amazon.com/RRr4AWzPW4wB/JP-CBCC-SS10-Multi-Message-Experiment-Plan" target="_blank">
+        <span class="link-icon">📋</span>
+        <div class="link-text">
+          <div class="link-title">SS10 Test w/BI</div>
+          <div class="link-desc">JP CBCC SS10 Multi-Message Experiment Plan (Quip)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://quip-amazon.com/tEPwAPMQCNA6/SS10-Experiment" target="_blank">
+        <span class="link-icon">📋</span>
+        <div class="link-text">
+          <div class="link-title">SS10 Test 設計</div>
+          <div class="link-desc">SS10 Experiment (Quip)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/sites/APJ/Shared%20Documents/CBCC/Marketing/02_Acquisition/202606_CTR%20Decline/SS10_Experiment/SS10%20experiment%20mastersheet.xlsx?web=1" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">SS10 test管理表</div>
+          <div class="link-desc">SS10 experiment mastersheet (SharePoint)</div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <!-- MTG Minutes -->
+  <div class="section">
+    <div class="section-header" style="background:#b45309;">📝 MTG Minutes</div>
+    <div class="links">
+      <a class="link-item" href="https://amazon.sharepoint.com/:x:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7B91290DA9-4991-41E3-B297-956F31DD417E%7D&file=PD26%20Go%20Big%20Ideas.xlsx&wdLOR=cB662D038-91BB-4417-A6DD-C33C2B8D41B8&action=default&mobileredirect=true" target="_blank">
+        <span class="link-icon">🚀</span>
+        <div class="link-text">
+          <div class="link-title">Go Big</div>
+          <div class="link-desc">PD26 Go Big Ideas (SharePoint)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/:w:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7B92E55C38-0F44-419A-918F-F51BE2876255%7D&file=2026%20JP%20CBCC%20Marketing%20Team%20Sync%20Up.docx&action=default&mobileredirect=true&CID=4F18468A-F774-4B04-ADEA-9B192B50E3D7&wdLOR=cBF06C34B-3B1E-48E9-9703-13D867B643ED" target="_blank">
+        <span class="link-icon">📄</span>
+        <div class="link-text">
+          <div class="link-title">CBCC Marketing</div>
+          <div class="link-desc">JP CBCC Marketing Team Sync Up</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/:w:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7BFF12410C-757C-4511-9A89-DBA07F9FBDA5%7D&file=2026%20H1%20-%20JP%20CBCC%20Weekly%20Business%20Review%20(WBR).docx&action=default&mobileredirect=true&CID=D32195C2-3020-492D-9F89-D325D5B44CD8&wdLOR=cEFB06011-DCE3-40E1-8166-D2D56B8CBAB2" target="_blank">
+        <span class="link-icon">📄</span>
+        <div class="link-text">
+          <div class="link-title">CBCC WBR</div>
+          <div class="link-desc">JP CBCC Weekly Business Review</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://loop.cloud.microsoft/p/eyJ3Ijp7InUiOiJodHRwczovL2FtYXpvbi5zaGFyZXBvaW50LmNvbS8%2FbmF2PWN6MGxNa1ltWkQxaUlWOXhUVXhuY0RSVmRFVlRWalI1VUhONE1uazFObFZ0WW5oaWVEWnFRbXhLWjBZemNYaFpNWEZ2UTBGdlQxZFVjMFZZTm5sVFNsZzJReTFwYVVoM2IwVW1aajB3TVUxSVIxSlBSVFpTVjFrMVRETlJOa015U2tRelRVa3lTamRZUXpWVFZWbGFKbU05Sm1ac2RXbGtQVEUlM0QiLCJyIjpmYWxzZX0sInAiOnsidSI6Imh0dHBzOi8vYW1hem9uLnNoYXJlcG9pbnQuY29tLzpmbDovci9jb250ZW50c3RvcmFnZS9DU1BfODIwYmEzZmUtMTQ5ZS00NGI0LTk1ZTMtMjNlY2M3NmNiOWU5L0RvY3VtZW50JTIwTGlicmFyeS9Mb29wQXBwRGF0YS9VbnRpdGxlZC5sb29wP2Q9d2ZjNmRmZWIwYjQ2YjQyNGJhZGUxMDMzY2UxNWZlM2Y2JmNzZj0xJndlYj0xJm5hdj1jejBsTWtaamIyNTBaVzUwYzNSdmNtRm5aU1V5UmtOVFVGODRNakJpWVRObVpTMHhORGxsTFRRMFlqUXRPVFZsTXkweU0yVmpZemMyWTJJNVpUa21aRDFpSVY5eFRVeG5jRFJWZEVWVFZqUjVVSE40TW5rMU5sVnRZbmhpZURacVFteEtaMFl6Y1haWk1YRnZRMEZ2VDFkVWMwVllObmxUU2xnMlF5MXBhVWgzYjBVbVpqMHdNVTFJUjFKUFJUVlJOMXBYTjFreU5WVktUa0pMTTFsSlJFaFVVVlkzV1RkWEptTTlKVEpHSm1ac2RXbGtQVEVtWVQxTWIyOXdRWEJ3Sm5BOUpUUXdabXgxYVdSNEpUSkdiRzl2Y0Mxd1lXZGxMV052Ym5SaGFXNWxjaVo0UFNVM1FpVXlNbmNsTWpJbE0wRWxNakpVTUZKVVZVaDRhR0pYUmpaaU1qUjFZekpvYUdOdFZuZGlNbXgxWkVNMWFtSXlNVGhaYVVabVkxVXhUVm96UVRCV1dGSkdWVEZaTUdWV1FucGxSRW8xVGxSYVZtSlhTalJaYm1jeVlXdEtjMU50WkVkTk0wWTBWMVJHZUdJd1RrSmlNRGxZVmtoT1JsZEVXalZWTUhCWlRtdE5kR0ZYYkVsa01qbEdaa1JCZUZSVmFFaFZhemxHVG14S1dGZFVWazFOTVVVeVVYcEtTMUpFVGs1VFZFcExUakZvUkU1V1RsWlhWbThsTTBRbE1qSWxNa01sTWpKcEpUSXlKVE5CSlRJeU5UWTNZMkZpWXpjdE5tRm1OeTAwTVdWbUxXRTVOREV0WXpVeVkySmxNRFExTVdRMUpUSXlKVGRFIiwiciI6ZmFsc2V9LCJpIjp7ImkiOiI1NjdjYWJjNy02YWY3LTQxZWYtYTk0MS1jNTJjYmUwNDUxZDUifX0%3D" target="_blank">
+        <span class="link-icon">🔄</span>
+        <div class="link-text">
+          <div class="link-title">APJ Marketing</div>
+          <div class="link-desc">APJ Marketing MTG (Loop)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://zen-program-management.awsapps.com/workdocs-amazon/index.html#/document/6ac92346881cf4d449d355beee1fffc64e4fff2d6d40db4133b82595679b5ea9?officeEditor=true&siteReturnPath=%23%2Fdocument%2F6ac92346881cf4d449d355beee1fffc64e4fff2d6d40db4133b82595679b5ea9" target="_blank">
+        <span class="link-icon">📄</span>
+        <div class="link-text">
+          <div class="link-title">SMCC MTG</div>
+          <div class="link-desc">SMCC MTG Minutes (WorkDocs)</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- ODCV Quip Docs -->
+  <div class="section">
+    <div class="section-header quip">📁 Project</div>
+    <div class="links">
+      <a class="link-item" href="https://quip-amazon.com/BQjSAlwd0anS/JP-CBCC-ODCV-Phase-1" target="_blank">
+        <span class="link-icon">📋</span>
+        <div class="link-text">
+          <div class="link-title">Phase 1 Spec<span class="badge badge-red">WIP</span></div>
+          <div class="link-desc">JP-CBCC ODCV Phase 1 仕様書</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://quip-amazon.com/dMDbAq3IJ1VU/ODCV-TESTING-ARTEFACT-DATA" target="_blank">
+        <span class="link-icon">🧪</span>
+        <div class="link-text">
+          <div class="link-title">Testing Artefact</div>
+          <div class="link-desc">ODCV テストデータ・結果</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://quip-amazon.com/A6rUAMf5fZRS/2026-OP1-item-On-Demand-Customer-Variables-ODCV-in-Marquetry-JP-CBCC" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">BRD (2026 OP1)</div>
+          <div class="link-desc">ODCV Business Requirements Doc</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://quip-amazon.com/RfdOAegFbbMf/JP-CBCC-ODVC-And-Dynamic-Ingress-Matrix-Document" target="_blank">
+        <span class="link-icon">🗺️</span>
+        <div class="link-text">
+          <div class="link-title">ODCV Matrix</div>
+          <div class="link-desc">Application state × ODCV scope / Dynamic Ingress variable matrix</div>
+        </div>
+      </a>      <a class="link-item" href="https://amazon.sharepoint.com/:x:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7B91290DA9-4991-41E3-B297-956F31DD417E%7D&file=PD26%20Go%20Big%20Ideas.xlsx&wdLOR=cB662D038-91BB-4417-A6DD-C33C2B8D41B8&action=default&mobileredirect=true" target="_blank">
+        <span class="link-icon">🚀</span>
+        <div class="link-text">
+          <div class="link-title">Go Big</div>
+          <div class="link-desc">PD26 Go Big Ideas (SharePoint)</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+
+
+  <!-- SharePoint -->
+  <div class="section">
+    <div class="section-header" style="background:#0078d4;">🗄️ SharePoint</div>
+    <div class="links">
+      <a class="link-item" href="https://amazon.sharepoint.com/sites/APJ/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAPJ%2FShared%20Documents%2FMarketing&viewid=e527c512%2D290d%2D407e%2D90bf%2D5f7ccd8ccf21&newTargetListUrl=%2Fsites%2FAPJ%2FShared%20Documents&viewpath=%2Fsites%2FAPJ%2FShared%20Documents%2FForms%2FAllItems%2Easpx" target="_blank">
+        <span class="link-icon">📁</span>
+        <div class="link-text">
+          <div class="link-title">APJ Marketing</div>
+          <div class="link-desc">APJ / Shared Documents / Marketing</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/sites/JPCBCC/Shared%20Documents/Forms/AllItems.aspx" target="_blank">
+        <span class="link-icon">📁</span>
+        <div class="link-text">
+          <div class="link-title">JP CBCC</div>
+          <div class="link-desc">JP CBCC / Shared Documents</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/sites/APJ/Shared%20Documents/CBCC/Marketing/" target="_blank">
+        <span class="link-icon">📁</span>
+        <div class="link-text">
+          <div class="link-title">JP CBCC Marketing</div>
+          <div class="link-desc">APJ / Shared Documents / CBCC / Marketing</div>
+        </div>
+      </a>
+      <a class="link-item" href="file://ant.amazon.com/dept-as/HND10/ConsumerPayments/ConsumerPayments/CBCC" target="_blank">
+        <span class="link-icon">🗂️</span>
+        <div class="link-text">
+          <div class="link-title">CBCC Shared</div>
+          <div class="link-desc">\\ant.amazon.com\dept-as\HND10\ConsumerPayments\CBCC</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/sites/APJ/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAPJ%2FShared%20Documents%2FCBCC%2FBusiness%20Reviews%2FCBCC%5FMBR%26QBR%2F2026&viewid=e527c512%2D290d%2D407e%2D90bf%2D5f7ccd8ccf21" target="_blank">
+        <span class="link-icon">📁</span>
+        <div class="link-text">
+          <div class="link-title">MBR&amp;QBR</div>
+          <div class="link-desc">CBCC / Business Reviews / MBR&amp;QBR / 2026</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/:x:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7BB8C15CD7-A62F-4ECF-8FB8-DD208642F76D%7D&file=JP_CBCC_MBR_Appendix_Template_V2.xlsx&action=default&mobileredirect=true" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">MBR P0.5&amp;Appendix</div>
+          <div class="link-desc">JP CBCC MBR P0.5 &amp; Appendix テンプレート</div>
+        </div>
+      </a>
+      <div class="link-item" onclick="copyPath('\\\\ant.amazon.com\\dept-as\\HND10\\ConsumerPayments\\Reports\\CreditWBR\\JP_Credit_WBR_20260621.xlsx', this)" style="cursor:pointer;">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">WBR Metrics Excel <span style="font-size:0.65rem;font-weight:400;color:#6b7280;">📋 クリックでパスをコピー</span></div>
+          <div class="link-desc">\\ant.amazon.com\dept-as\HND10\ConsumerPayments\Reports\CreditWBR</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Goals & Strategy -->
+  <div class="section">
+    <div class="section-header" style="background:#facc15; color:#fff;">🎯 Goals & Strategy</div>
+    <div class="links">
+      <a class="link-item" href="https://amazon.sharepoint.com/:x:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7B947B79BF-5046-49B2-9281-5B55351835F0%7D&file=2026%20APJ%20Goals%20-%20OP2%20Working%20File.xlsx&action=default&mobileredirect=true&CID=6C3BC134-1352-4137-A523-2B1178A56555&wdLOR=cEA9A665B-AC61-4940-A1ED-AF2A781FD624" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">APJ Goals</div>
+          <div class="link-desc">2026 APJ Goals OP2 Working File</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://amazon.sharepoint.com/:x:/r/sites/APJ/_layouts/15/Doc.aspx?sourcedoc=%7Bbe4b705f-1e40-4159-ada1-89ae35d061d6%7D&action=edit&wdenableroaming=1&wdlcid=ja&wdorigin=ItemsView&wdhostclicktime=1781281992728&wdredirectionreason=Force_SingleStepBoot&wdinitialsession=890f1a58-3ec3-0691-f478-7d463090caff&wdrldsc=2&wdrldc=1&wdrldr=ContinueInExcel" target="_blank">
+        <span class="link-icon">📊</span>
+        <div class="link-text">
+          <div class="link-title">CBCC OP2 Target</div>
+          <div class="link-desc">CBCC OP2 Target (SharePoint)</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- Reference -->
+  <div class="section">
+    <div class="section-header" style="background:#64748b;">📚 Reference</div>
+    <div class="links">
+      <a class="link-item" href="https://marquetry-eu.aka.amazon.com/products/DE_CBCC_SAN" target="_blank">
+        <span class="link-icon">🗂️</span>
+        <div class="link-text">
+          <div class="link-title">DE CBCC</div>
+          <div class="link-desc">Marquetry EU — DE_CBCC_SAN</div>
+        </div>
+      <a class="link-item" href="https://www.amazon.com/dp/BT00LN946S?bypass=1" target="_blank">
+        <span class="link-icon">🇺🇸</span>
+        <div class="link-text">
+          <div class="link-title">US CBCC</div>
+          <div class="link-desc">Amazon.com — US CBCC DP</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://www.amazon.co.uk/dp/B0BH98211K/?psc=1" target="_blank">
+        <span class="link-icon">🇬🇧</span>
+        <div class="link-text">
+          <div class="link-title">UK CBCC</div>
+          <div class="link-desc">Amazon.co.uk — UK CBCC DP</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- Amazon Internal Tools -->
+  <div class="section">
+    <div class="section-header amazon">🔐 Amazon 内部ツール</div>
+    <div class="links">
+      <a class="link-item" href="https://bunsho.amazon.dev/GfpAx6yjDm0Ky/Untitled" target="_blank">
+        <span class="link-icon">📝</span>
+        <div class="link-text">
+          <div class="link-title">Bunsho（文書）</div>
+          <div class="link-desc">Amazon Collaborative Document Tool — Quip代替</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://chorus.aws.dev/" target="_blank">
+        <span class="link-icon">🎵</span>
+        <div class="link-text">
+          <div class="link-title">Chorus</div>
+          <div class="link-desc">Amazon Collaborative Tool — Quip代替</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://midway-auth.amazon.com/login?reauth=1" target="_blank">
+        <span class="link-icon">🔑</span>
+        <div class="link-text">
+          <div class="link-title">Midway 再認証</div>
+          <div class="link-desc">mwinit 後の Midway ログイン</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://docs.hub.amazon.dev/claude-code/user-guide/" target="_blank">
+        <span class="link-icon">🤖</span>
+        <div class="link-text">
+          <div class="link-title">ソフトウェア開発者向けポータル(AI)</div>
+          <div class="link-desc">Amazon Developer Hub — Claude Code ユーザーガイド</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://w.amazon.com/bin/view/RAPIDBeta/GetCustomerId/" target="_blank">
+        <span class="link-icon">🔍</span>
+        <div class="link-text">
+          <div class="link-title">CIDを調べる</div>
+          <div class="link-desc">Customer ID (CID) 検索ツール (RAPID Beta)</div>
+        </div>
+      </a>
+      <a class="link-item" href="https://drive-render.corp.amazon.com/view/yngbi@/s3/apj-kb-web/index.html#ai-install" target="_blank">
+        <span class="link-icon">🤖</span>
+        <div class="link-text">
+          <div class="link-title">APJ KB Web (AI Install)</div>
+          <div class="link-desc">APJ Knowledge Base — AI インストールガイド</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+function copyCid(el) {
+  navigator.clipboard.writeText(el.textContent).then(() => {
+    el.classList.add('copied');
+    setTimeout(() => el.classList.remove('copied'), 1200);
+  });
+}
+function copyPath(text, el) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  document.execCommand('copy');
+  document.body.removeChild(ta);
+  el.style.background = '#dcfce7';
+  setTimeout(function(){ el.style.background = ''; }, 1200);
+}
+</script>
+</body>
+</html>
