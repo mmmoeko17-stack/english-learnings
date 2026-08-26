@@ -186,11 +186,11 @@
 
 <div class="stats-bar">
 
-  <div class="stat"><div class="stat-num" id="stat-lessons">6</div><div class="stat-label">受講済み回数</div></div>
+  <div class="stat"><div class="stat-num" id="stat-lessons">9</div><div class="stat-label">受講済み回数</div></div>
 
   <div class="stat"><div class="stat-num" id="stat-points">217</div><div class="stat-label">蓄積ポイント数</div></div>
 
-  <div class="stat"><div class="stat-num" id="stat-remain">18</div><div class="stat-label">残り回数</div></div>
+  <div class="stat"><div class="stat-num" id="stat-remain">15</div><div class="stat-label">残り回数</div></div>
 
 </div>
 
@@ -224,7 +224,7 @@
 
 <div class="no-results" id="no-results" style="display:none;">該当するメモが見つかりません</div>
 
-<div class="updated">最終更新: 2026-08-01 ／ Akiが授業メモから自動整理</div>
+<div class="updated">最終更新: 2026-08-27 ／ Akiが授業メモから自動整理</div>
 
 
 
@@ -1934,6 +1934,99 @@ const LESSONS = [
           { text: "　例: It is important that everyone <span class='highlight'>be</span> on time.（× is）", tags: ["syntax"] },
           { text: "💡 <b>shouldを補って読む</b>と意味が掴みやすい: that he (should) go / that she (should) be present", tags: ["tense"] },
           { text: "💡 <b>アメリカ英語</b>は原形（仮定法現在）を好み、<b>イギリス英語</b>はshouldをそのまま残す傾向がある", tags: ["tense"] },
+        ]
+      }
+    ]
+  },
+  {
+    num: 9,
+    title: "等位接続詞の柔軟性・Adverbの修飾位置・前置詞句・such as",
+    date: "2026-08-27",
+    caution: "等位接続詞（同格名詞ではなく）のso/for/butは節のみ / and・orは単語・句・節すべてOK",
+    topics: [
+      {
+        title: "等位接続詞の柔軟性 — so/for/but vs and/or",
+        color: "#4f8ef7",
+        tags: ["syntax"],
+        points: [
+          { text: "⚠️ <b>メモの「同格名詞」は「等位接続詞」の誤り</b>（同格名詞はappositive nounで別物）", tags: ["syntax"] },
+          { text: "<b>so / for / but</b>: 節（S + V）のみを結べる", tags: ["syntax"] },
+          { text: "　例: It was raining, <span class='highlight'>so</span> we stayed inside.（節 + 節）✅", tags: ["syntax"] },
+          { text: "　❌ <span class='highlight'>so</span> quickly（句 / 単語はNG）", tags: ["syntax"] },
+          { text: "<b>and / or</b>: 単語・句・節すべてを結べる", tags: ["syntax"] },
+          { text: "　例（単語）: coffee <span class='highlight'>and</span> tea", tags: ["syntax"] },
+          { text: "　例（句）: working hard <span class='highlight'>and</span> staying focused", tags: ["syntax"] },
+          { text: "　例（節）: She sang <span class='highlight'>and</span> he played piano.", tags: ["syntax"] },
+          { text: "<b>when / if / because（従位接続詞）— 節のみ・句に変換できない</b>", tags: ["syntax"] },
+          { text: "　because / when / if は前置詞として使えない → 後ろは常に S + V の節が必要", tags: ["syntax"] },
+          { text: "　<b>副詞句にしたい場合 → 分詞構文（接続詞自体が消え、動詞がV-ingに変わる）</b>", tags: ["syntax"] },
+          { text: "　例: <span class='highlight'>Because she was tired,</span> she went to bed. → <span class='highlight'>Being tired,</span> she went to bed.（because が消える）", tags: ["syntax"] },
+          { text: "　例: <span class='highlight'>When he arrived,</span> he called me. → <span class='highlight'>Arriving,</span> he called me.（when が消える）", tags: ["syntax"] },
+          { text: "　💡 対比: <b>after / before / while は前置詞としても使える</b> → after finishing（句）/ after she finished（節）両方OK", tags: ["syntax"] },
+          { text: "　例: <span class='highlight'>After finishing</span> dinner, she called him.（after = 前置詞 + 動名詞）", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "Adverbの修飾位置 — Verb修飾は複数の場所OK",
+        color: "#f5c842",
+        tags: ["syntax"],
+        points: [
+          { text: "<b>① Adjective / Adverb を修飾する場合 → 必ず直前のみ</b>", tags: ["syntax"] },
+          { text: "　例: She is <span class='highlight'>very</span> beautiful.（very が beautiful を修飾 → 直前のみ可）", tags: ["syntax"] },
+          { text: "　例: He runs <span class='highlight'>quite</span> slowly.（quite が slowly を修飾 → 直前のみ可）", tags: ["syntax"] },
+          { text: "<b>② Verb を修飾する場合 → 複数の位置OK</b>", tags: ["syntax"] },
+          { text: "　<b>文頭</b>（句・節もOK）: <span class='highlight'>Suddenly,</span> she left.（単語） / <span class='highlight'>In the morning,</span> she exercises.（句）", tags: ["syntax"] },
+          { text: "　<b>文末</b>（句・節もOK）: She left <span class='highlight'>suddenly</span>. / He works out <span class='highlight'>every morning</span>.（句）", tags: ["syntax"] },
+          { text: "　<b>Verbの直前・直後 → 単語のAdverbのみ</b>（句・節はNG）", tags: ["syntax"] },
+          { text: "　　例: She <span class='highlight'>quickly</span> left.（直前 ✅）/ She left <span class='highlight'>quickly</span>.（直後 ✅）", tags: ["syntax"] },
+          { text: "　　❌ She <span class='highlight'>in a hurry</span> left.（前置詞句は直前に置けない）", tags: ["syntax"] },
+          { text: "　<b>Verbが2語以上（助動詞 + V / be + 過去分詞）→ 2語目の前に単語のAdverb</b>", tags: ["syntax"] },
+          { text: "　　例: She has <span class='highlight'>never</span> been there.（has → <b>never</b> → been）", tags: ["syntax"] },
+          { text: "　　例: He can <span class='highlight'>easily</span> solve it.（can → <b>easily</b> → solve）", tags: ["syntax"] },
+          { text: "　　例: The report was <span class='highlight'>carefully</span> written.（was → <b>carefully</b> → written）", tags: ["syntax"] },
+          { text: "　<b>挿入（, Adverb ,）→ S + V の間</b>: 単語・句どちらもOK", tags: ["syntax"] },
+          { text: "　　例: She, <span class='highlight'>surprisingly,</span> passed the exam.（単語を挿入）", tags: ["syntax"] },
+          { text: "　　例: The project, <span class='highlight'>as expected,</span> was delayed.（句を挿入）", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "前置詞 + Noun → AdverbかAdjective",
+        color: "#3ecf8e",
+        tags: ["syntax"],
+        points: [
+          { text: "<b>前置詞 + Noun（前置詞句）は文中の位置によってAdjectiveかAdverbになる</b>（第3・5回の復習）", tags: ["syntax"] },
+          { text: "　<b>Noun の直後</b> → <b>Adjective</b>（その名詞を修飾）", tags: ["syntax"] },
+          { text: "　　例: the book <span class='highlight'>on the table</span>（on the table = Adjective → book を修飾）", tags: ["syntax"] },
+          { text: "　<b>Verbの後ろ・文頭・文末</b> → <b>Adverb</b>（文全体を修飾）", tags: ["syntax"] },
+          { text: "　　例: <span class='highlight'>In the morning,</span> she exercises.（文頭 = Adverb）", tags: ["syntax"] },
+          { text: "　　例: She exercises <span class='highlight'>in the morning</span>.（文末 = Adverb）", tags: ["syntax"] },
+        ]
+      },
+      {
+        title: "不定詞のAdverb = so~thatの簡略形（第7回の逆方向）",
+        color: "#a78bfa",
+        tags: ["syntax","verbal"],
+        points: [
+          { text: "<b>副詞的用法の不定詞（目的）は so~that S can V の簡略化されたもの</b>", tags: ["verbal"] },
+          { text: "　元の形（so~that）: He studied hard <span class='highlight'>so that he could pass</span> the exam.", tags: ["verbal"] },
+          { text: "　簡略形（to不定詞）: He studied hard <span class='highlight'>to pass</span> the exam.", tags: ["verbal"] },
+          { text: "　同様に enough to も so~that の簡略形:", tags: ["verbal"] },
+          { text: "　She is <span class='highlight'>so smart that she can solve</span> it. → She is smart <span class='highlight'>enough to solve</span> it.", tags: ["verbal"] },
+          { text: "💡 <b>逆方向の書き換えは第7回で学習済み</b>（to不定詞 → so~that）。今回は「to不定詞がso~thatの簡略形である」という視点", tags: ["verbal"] },
+        ]
+      },
+      {
+        title: "such as = like — 後ろはNounのみ（S+VはNG）",
+        color: "#f06a6a",
+        tags: ["syntax","vocab"],
+        points: [
+          { text: "<b>such as / like</b>: 前置詞的な使い方 → 後ろには <b>Noun（名詞・名詞句）のみ</b>", tags: ["syntax"] },
+          { text: "　✅ I enjoy sports <span class='highlight'>such as</span> tennis and swimming.（noun）", tags: ["vocab"] },
+          { text: "　✅ He behaves <span class='highlight'>like</span> a professional.（noun phrase）", tags: ["vocab"] },
+          { text: "　❌ I enjoy sports <span class='highlight'>such as</span> she plays.（S+V は不可）", tags: ["syntax"] },
+          { text: "💡 <b>such as は「例を挙げる」前置詞</b>。後ろにS+VのClauseが来ることはない", tags: ["syntax"] },
+          { text: "⚠️ <b>like と as の違い</b>: like = 前置詞（後ろはNoun）/ as = 接続詞にもなれる（後ろにS+Vも可）", tags: ["vocab"] },
+          { text: "　例: Do <span class='highlight'>as</span> I say.（as = 接続詞 → S+V OK）/ She sings <span class='highlight'>like</span> a bird.（like = 前置詞 → Noun）", tags: ["vocab"] },
         ]
       }
     ]
